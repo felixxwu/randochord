@@ -1,0 +1,103 @@
+import styled from 'styled-components'
+import React, { useEffect, useRef, useState } from 'react'
+import { useEvents } from '../helpers/useEvents'
+
+const scrollSensitivity = 0.2
+const dragSensitivity = 0.5
+const maxAngle = 130
+let currentActiveKnob: SVGSVGElement | null = null
+let currentPointerY: number | null = null
+
+export function Knob(props: { text: string; value: number; onTurn: (value: number) => void }) {
+    const knobRef = useRef<SVGSVGElement>(null)
+    const [value, setValue] = useState(props.value)
+
+    useEvents(window.document.body, [
+        { type: 'pointerdown', handler: handlePointerDown },
+        { type: 'pointermove', handler: handlePointerMove },
+        { type: 'pointerup', handler: handlePointerUp },
+        { type: 'pointercancel', handler: handlePointerUp },
+        { type: 'pointerleave', handler: handlePointerUp },
+    ])
+
+    useEffect(() => {
+        props.onTurn(value)
+    }, [value])
+
+    useEffect(() => {
+        setValue(props.value)
+    }, [props.value])
+
+    return (
+        <KnobDiv>
+            <svg
+                style={svgStyle()}
+                onWheel={handleWheel}
+                ref={knobRef}
+                viewBox='0 0 100 100'
+                width='80px'
+            >
+                <KnobCircle cx='50' cy='50' r='30' />
+                <KnobLine x1='50' y1='35' x2='50' y2='28' />
+            </svg>
+            {props.text}
+        </KnobDiv>
+    )
+
+    function svgStyle(): React.CSSProperties {
+        return {
+            transform: `rotate(${-maxAngle + value * ((maxAngle * 2) / 100)}deg)`,
+        }
+    }
+
+    function handlePointerDown(this: HTMLElement, event: PointerEvent) {
+        if (knobRef.current === null) return
+        if (!(event.target instanceof Element)) return
+        if (knobRef.current.contains(event.target)) {
+            currentActiveKnob = knobRef.current
+        }
+    }
+
+    function handlePointerMove(this: HTMLElement, event: PointerEvent) {
+        if (currentActiveKnob === knobRef.current) {
+            if (currentPointerY === null) currentPointerY = event.clientY
+            const diff = event.clientY - currentPointerY
+            currentPointerY = event.clientY
+            addToValue(diff * dragSensitivity)
+        }
+    }
+
+    function handlePointerUp(this: HTMLElement) {
+        if (currentActiveKnob === knobRef.current) {
+            currentActiveKnob = null
+            currentPointerY = null
+        }
+    }
+
+    function handleWheel(event: React.WheelEvent<SVGSVGElement>) {
+        addToValue(event.deltaY * scrollSensitivity)
+    }
+
+    function addToValue(diff: number) {
+        setValue(v => Math.max(0, Math.min(v - diff, 100)))
+    }
+}
+
+const KnobDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: s-resize;
+`
+
+const KnobCircle = styled.circle`
+    fill: #b89a9a;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.15));
+`
+
+const KnobLine = styled.line`
+    stroke: #ffffff;
+    stroke-width: 7px;
+    stroke-linecap: round;
+`

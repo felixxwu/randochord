@@ -6,4 +6,5 @@ export const store = createStore({
     getTrayPosition() {
         return consts.trayPositions[this.trayOpen ? 1 : 0]
     },
+    masterVolume: 100,
 })

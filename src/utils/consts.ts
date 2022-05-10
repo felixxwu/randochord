@@ -1,7 +1,6 @@
 export default {
     // colours
     shadowColor: 'rgba(0, 0, 0, 0.1)',
-    trayColour: '#fff2f0',
 
     // lengths
     shadowBlur: 50,

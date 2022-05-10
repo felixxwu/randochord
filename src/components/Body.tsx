@@ -25,6 +25,6 @@ const Tray = styled.div`
     box-shadow: 0 0 ${consts.shadowBlur}px 0 ${consts.shadowColor};
     width: 600px;
     overflow: hidden;
-    background-color: ${consts.trayColour};
+    background-color: #fff0f0;
     transition: ${consts.transition}ms;
 `
