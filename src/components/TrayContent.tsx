@@ -31,6 +31,7 @@ export function TrayContent() {
 
     function handleHandleClick() {
         store.state.trayOpen = !store.state.trayOpen
+        store.state.masterVolume = 50
     }
 
     function style(): React.CSSProperties {

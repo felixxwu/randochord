@@ -2,13 +2,18 @@ import styled from 'styled-components'
 import React, { useEffect, useRef, useState } from 'react'
 import { useEvents } from '../helpers/useEvents'
 
-const scrollSensitivity = 0.2
-const dragSensitivity = 0.5
+const dragSensitivity = 0.3
 const maxAngle = 130
 let currentActiveKnob: SVGSVGElement | null = null
 let currentPointerY: number | null = null
 
-export function Knob(props: { text: string; value: number; onTurn: (value: number) => void }) {
+export function Knob(props: {
+    text: string
+    divisions: number
+    scrollStep: number
+    value: number
+    onTurn: (value: number) => void
+}) {
     const knobRef = useRef<SVGSVGElement>(null)
     const [value, setValue] = useState(props.value)
 
@@ -21,10 +26,11 @@ export function Knob(props: { text: string; value: number; onTurn: (value: numbe
     ])
 
     useEffect(() => {
-        props.onTurn(value)
+        props.onTurn(Math.round(value))
     }, [value])
 
     useEffect(() => {
+        if (Math.round(value) === Math.round(props.value)) return
         setValue(props.value)
     }, [props.value])
 
@@ -46,7 +52,9 @@ export function Knob(props: { text: string; value: number; onTurn: (value: numbe
 
     function svgStyle(): React.CSSProperties {
         return {
-            transform: `rotate(${-maxAngle + value * ((maxAngle * 2) / 100)}deg)`,
+            transform: `rotate(${
+                -maxAngle + (Math.round(value) / props.divisions) * (maxAngle * 2)
+            }deg)`,
         }
     }
 
@@ -63,7 +71,7 @@ export function Knob(props: { text: string; value: number; onTurn: (value: numbe
             if (currentPointerY === null) currentPointerY = event.clientY
             const diff = event.clientY - currentPointerY
             currentPointerY = event.clientY
-            addToValue(diff * dragSensitivity)
+            addToValue(diff * dragSensitivity * (props.divisions / 100))
         }
     }
 
@@ -75,11 +83,11 @@ export function Knob(props: { text: string; value: number; onTurn: (value: numbe
     }
 
     function handleWheel(event: React.WheelEvent<SVGSVGElement>) {
-        addToValue(event.deltaY * scrollSensitivity)
+        addToValue(event.deltaY > 0 ? props.scrollStep : -props.scrollStep)
     }
 
     function addToValue(diff: number) {
-        setValue(v => Math.max(0, Math.min(v - diff, 100)))
+        setValue(v => Math.max(0, Math.min(v - diff, props.divisions)))
     }
 }
 
