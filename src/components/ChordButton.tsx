@@ -22,6 +22,7 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
                 onPointerDown={handlePlay}
                 onPointerUp={handleStop}
                 highlighted={isCurrentlyPlaying()}
+                menu={menu()}
             />
         </ChordDiv>
     )
@@ -49,6 +50,14 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
     function getChordText() {
         const options = Chord.detect(props.chord.map(note => getNoteName(note)))
         return options[0] ?? '?'
+    }
+
+    function menu() {
+        return [
+            { text: 'Copy', callback: () => console.log('copy') },
+            { text: 'Paste', callback: () => console.log('paste') },
+            { text: 'Delete', callback: () => console.log('delete') },
+        ]
     }
 }
 

@@ -67,9 +67,7 @@ export function redo() {
 }
 
 export function initHistory() {
-    console.log(`initHistory`)
     const history = getHistory()
-    console.log(`history.states.length`, history.states.length)
     if (history.states.length <= 0) {
         saveHistory()
     } else {
