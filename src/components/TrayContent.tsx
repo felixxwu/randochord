@@ -10,13 +10,13 @@ export function TrayContent() {
         <Tray style={style()}>
             <TrayContentWrapper>
                 <TrayContentDiv>
-                    hello
+                    work in progress
                     <br />
-                    hello
+                    work in progress
                     <br />
-                    hello
+                    work in progress
                     <br />
-                    hello
+                    work in progress
                 </TrayContentDiv>
             </TrayContentWrapper>
             <OpenCloseHandle onClick={handleHandleClick}>
@@ -29,7 +29,6 @@ export function TrayContent() {
 
     function handleHandleClick() {
         store.state.trayOpen = !store.state.trayOpen
-        store.state.masterVolume = 50
     }
 
     function style(): React.CSSProperties {

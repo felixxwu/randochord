@@ -5,7 +5,7 @@ import { getNoteName } from './getNoteName'
 export function createChord(): ChordType {
     const chord: ChordType = []
     while (chord.length < 4) {
-        const note = Math.floor(Math.random() * 12) + 12
+        const note = Math.floor(Math.random() * 12) + 48
         if (!chord.includes(note)) chord.push(note)
     }
     const isValid = Chord.detect(chord.map(note => getNoteName(note)))[0]

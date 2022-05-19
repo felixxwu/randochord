@@ -1,7 +1,7 @@
 import { NoteName } from '../utils/types'
 
-const notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'] as const
-const octaves = ['3', '4', '5'] as const
+const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'] as const
+const octaves = ['0', '1', '2', '3', '4', '5'] as const
 const noteNames: NoteName[] = []
 for (const octave of octaves) {
     for (const note of notes) {

@@ -34,7 +34,7 @@ export function playChord(chord: ChordType, time: number, duration?: number) {
 }
 
 export function chordAttack(chord: ChordType, time?: number) {
-    releaseAll(time ? time - 0.01 : undefined)
+    releaseAll()
     synth.triggerAttack(
         chord.map(note => getNoteName(note)),
         time,

@@ -4,10 +4,12 @@ import undoIcon from '../images/undo.svg'
 import redoIcon from '../images/redo.svg'
 import clear from '../images/clear.svg'
 import theme from '../images/theme.svg'
+import download from '../images/download.svg'
 import { Icon } from './Icon'
 import { store } from '../utils/store'
 import React from 'react'
 import { canRedo, canUndo, redo, saveHistory, undo } from '../utils/undo'
+import { downloadMidi } from '../helpers/midi'
 
 export function Toolbar() {
     return (
@@ -22,7 +24,10 @@ export function Toolbar() {
             <Button onClick={changeTheme}>
                 <Icon src={theme} alt='theme' size='small' />
             </Button>
-            <Button onClick={clearChords}>
+            <Button onClick={downloadMidi} data-disabled={store.state.chords.length === 0}>
+                <Icon src={download} alt='download' size='small' />
+            </Button>
+            <Button onClick={clearChords} data-disabled={store.state.chords.length === 0}>
                 <Icon src={clear} alt='clear' size='small' />
             </Button>
         </ToolbarDiv>
