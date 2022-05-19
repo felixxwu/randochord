@@ -31,6 +31,7 @@ export function Menu(props: { menu: { text: string; callback: () => void }[]; cl
             boxShadow: `0 0 ${consts.shadowBlur}px 0 ${store.state.theme.shadowColour}`,
             maxHeight: `${menuHeight}px`,
             transition: `${transition}ms linear`,
+            backgroundColor: store.state.theme.frontPanelColour,
         }
     }
 
@@ -51,7 +52,6 @@ const MenuCloser = styled.div`
 
 const MenuDiv = styled.div`
     width: max-content;
-    background-color: white;
     transform: translateY(calc(100vh - 100% - ${consts.margin}px)) translateX(100vw);
     border-radius: ${consts.borderRadius}px;
     cursor: pointer;
@@ -64,6 +64,6 @@ const MenuItem = styled.div`
     box-sizing: border-box;
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.03);
+        background-color: var(--highlight);
     }
 `

@@ -75,7 +75,7 @@ const Button = styled.div`
     cursor: pointer;
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.03);
+        background-color: var(--highlight);
     }
 
     img {

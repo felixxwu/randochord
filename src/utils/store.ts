@@ -20,8 +20,6 @@ export function getTrayPosition() {
 
 export function onStoreUpdate() {
     updateClockBpm()
-    window.document.documentElement.style.setProperty(
-        '--buttonColour',
-        store.state.theme.buttonColour
-    )
+    document.documentElement.style.setProperty('--buttonColour', store.state.theme.buttonColour)
+    document.documentElement.style.setProperty('--highlight', store.state.theme.highlight)
 }

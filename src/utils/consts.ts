@@ -9,6 +9,7 @@ type Theme = {
     shadowColour: string
     knobColour: string
     knobLineColour: string
+    highlight: string
 }
 
 export default {
@@ -28,6 +29,7 @@ export default {
             shadowColour: 'rgba(0, 0, 0, 0.1)',
             knobColour: '#ccb8b8',
             knobLineColour: '#ffffff',
+            highlight: 'rgba(0, 0, 0, 0.03)',
         }
     },
     get darkTheme(): Theme {
@@ -44,6 +46,7 @@ export default {
             shadowColour: 'rgba(0, 0, 0, 0.4)',
             knobColour: '#807373',
             knobLineColour: '#454545',
+            highlight: 'rgba(0, 0, 0, 0.15)',
         }
     },
 
