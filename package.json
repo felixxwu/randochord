@@ -8,10 +8,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tonaljs/tonal": "^4.6.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "styled-components": "^5.3.5",
-    "truly-global-state": "^1.0.5"
+    "tone": "^14.7.77",
+    "truly-global-state": "^1.0.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

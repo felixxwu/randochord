@@ -1,3 +1,7 @@
-import React from 'react'
+export type ChordType = number[]
 
-// export type Styles = {[key: string]: React.CSSProperties}
+type NoteLetter = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G'
+type NoteModifier = '' | '#'
+type NoteOctave = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+
+export type NoteName = `${NoteLetter}${NoteModifier}${NoteOctave}`

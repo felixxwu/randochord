@@ -26,12 +26,15 @@ export function Knob(props: {
     ])
 
     useEffect(() => {
+        if (Math.round(value) === Math.round(props.value)) return
         props.onTurn(Math.round(value))
     }, [value])
 
     useEffect(() => {
-        if (Math.round(value) === Math.round(props.value)) return
-        setValue(props.value)
+        setTimeout(() => {
+            if (Math.round(value) === Math.round(props.value)) return
+            setValue(props.value)
+        })
     }, [props.value])
 
     return (

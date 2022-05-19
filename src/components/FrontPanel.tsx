@@ -1,26 +1,26 @@
-import { Button } from './Button'
-import play from '../images/play.svg'
-import stop from '../images/stop.svg'
-import React, { useState } from 'react'
+import React from 'react'
 import consts from '../utils/consts'
 import styled from 'styled-components'
 import { Knob } from './Knob'
 import { store } from '../utils/store'
+import { ChordButton } from './ChordButton'
+import { AddChord } from './AddChord'
+import { PlayStopButton } from './PlayStopButton'
 
 export function FrontPanel() {
-    const [tempVal, setTempVal] = useState(0)
     return (
         <FrontPanelDiv style={frontPanelStyle()}>
-            <Button icon={play} small={false} />
-            <Button icon={stop} small={false} />
-            <Knob
-                text={`${tempVal}`}
-                divisions={10}
-                scrollStep={1}
-                value={tempVal}
-                onTurn={value => setTempVal(value)}
-            />
-            <MasterVolume>
+            <ControlRow>
+                <PlayStopButton />
+                <BPMKnob>
+                    <Knob
+                        text={`BPM ${store.state.bpm}`}
+                        divisions={consts.maxBpm - consts.minBpm}
+                        scrollStep={1}
+                        value={store.state.bpm - consts.minBpm}
+                        onTurn={value => (store.state.bpm = value + consts.minBpm)}
+                    />
+                </BPMKnob>
                 <Knob
                     text={`Vol. ${store.state.masterVolume}`}
                     divisions={100}
@@ -28,7 +28,13 @@ export function FrontPanel() {
                     value={store.state.masterVolume}
                     onTurn={value => (store.state.masterVolume = value)}
                 />
-            </MasterVolume>
+            </ControlRow>
+            <ChordRow>
+                {store.state.chords.map((chord, index) => (
+                    <ChordButton key={index} chord={chord} index={index} />
+                ))}
+                <AddChord />
+            </ChordRow>
         </FrontPanelDiv>
     )
 
@@ -39,18 +45,39 @@ export function FrontPanel() {
 
 const FrontPanelDiv = styled.div`
     display: flex;
+    flex-direction: column;
     height: ${consts.panelHeight}px;
-    align-items: center;
-    padding: 0 20px;
+    padding: 20px;
+    box-sizing: border-box;
     border-radius: ${consts.borderRadius}px;
     background-color: #fbfbfb;
     box-shadow: 0 0 ${consts.shadowBlur}px 0 ${consts.shadowColor};
+
+    > * + * {
+        margin-top: ${consts.margin}px;
+    }
+`
+
+const ControlRow = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
 
     > * + * {
         margin-left: ${consts.margin}px;
     }
 `
 
-const MasterVolume = styled.div`
+const ChordRow = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    > * + * {
+        margin-left: ${consts.margin}px;
+    }
+`
+
+const BPMKnob = styled.div`
     margin-left: auto;
 `

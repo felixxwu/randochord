@@ -1,10 +1,11 @@
 import { Body } from './Body'
 import styled from 'styled-components'
 import React from 'react'
-import { store } from '../utils/store'
+import { onStoreUpdate, store } from '../utils/store'
 
 export default function App() {
     store.subscribeToAll()
+    onStoreUpdate()
 
     return (
         <AppDiv style={style()}>
