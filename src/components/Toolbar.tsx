@@ -7,23 +7,23 @@ import theme from '../images/theme.svg'
 import { Icon } from './Icon'
 import { store } from '../utils/store'
 import React from 'react'
-import { redo, saveHistory, undo } from '../utils/undo'
+import { canRedo, canUndo, redo, saveHistory, undo } from '../utils/undo'
 
 export function Toolbar() {
     return (
         <ToolbarDiv style={style()}>
             <Title>RandoChord</Title>
-            <Button onClick={undo}>
+            <Button onClick={undo} data-disabled={!canUndo()}>
                 <Icon src={undoIcon} alt='undo' size='small' />
             </Button>
-            <Button onClick={redo}>
+            <Button onClick={redo} data-disabled={!canRedo()}>
                 <Icon src={redoIcon} alt='redo' size='small' />
-            </Button>
-            <Button onClick={clearChords}>
-                <Icon src={clear} alt='clear' size='small' />
             </Button>
             <Button onClick={changeTheme}>
                 <Icon src={theme} alt='theme' size='small' />
+            </Button>
+            <Button onClick={clearChords}>
+                <Icon src={clear} alt='clear' size='small' />
             </Button>
         </ToolbarDiv>
     )
@@ -80,5 +80,10 @@ const Button = styled.div`
 
     img {
         width: ${consts.iconSmall}px;
+    }
+
+    &[data-disabled='true'] {
+        opacity: 0.5;
+        pointer-events: none;
     }
 `

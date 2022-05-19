@@ -48,20 +48,24 @@ export function saveHistory() {
     localStorage.setItem(storageKey, JSON.stringify(history))
 }
 
+export function canUndo(history = getHistory()) {
+    return history.position > 0
+}
+
+export function canRedo(history = getHistory()) {
+    return history.position < history.states.length - 1
+}
+
 export function undo() {
     const history = getHistory()
-    if (history.position > 0) {
-        history.position--
-    }
+    if (canUndo(history)) history.position--
     localStorage.setItem(storageKey, JSON.stringify(history))
     loadHistory()
 }
 
 export function redo() {
     const history = getHistory()
-    if (history.position < history.states.length - 1) {
-        history.position++
-    }
+    if (canRedo(history)) history.position++
     localStorage.setItem(storageKey, JSON.stringify(history))
     loadHistory()
 }

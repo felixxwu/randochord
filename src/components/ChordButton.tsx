@@ -56,8 +56,13 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
         return [
             { text: 'Copy', callback: () => console.log('copy') },
             { text: 'Paste', callback: () => console.log('paste') },
-            { text: 'Delete', callback: () => console.log('delete') },
+            { text: 'Delete', callback: deleteChord },
         ]
+    }
+
+    function deleteChord() {
+        store.state.chords.splice(props.index, 1)
+        saveHistory()
     }
 }
 
