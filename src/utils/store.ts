@@ -2,6 +2,7 @@ import { createStore } from 'truly-global-state'
 import consts from './consts'
 import { ChordType } from './types'
 import { updateClockBpm } from '../helpers/clock'
+import { loadFromLocalStorage, saveToLocalStorage } from './localStorage'
 
 export const store = createStore({
     trayOpen: false,
@@ -12,14 +13,17 @@ export const store = createStore({
     theme: consts.lightTheme,
 })
 
+loadFromLocalStorage()
+
+export function onStoreUpdate() {
+    saveToLocalStorage()
+    updateClockBpm()
+    document.documentElement.style.setProperty('--buttonColour', store.state.theme.buttonColour)
+    document.documentElement.style.setProperty('--highlight', store.state.theme.highlight)
+}
+
 export type StoreType = typeof store.state
 
 export function getTrayPosition() {
     return consts.trayPositions[store.state.trayOpen ? 1 : 0]
-}
-
-export function onStoreUpdate() {
-    updateClockBpm()
-    document.documentElement.style.setProperty('--buttonColour', store.state.theme.buttonColour)
-    document.documentElement.style.setProperty('--highlight', store.state.theme.highlight)
 }
