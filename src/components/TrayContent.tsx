@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import consts from '../utils/consts'
-import { store } from '../utils/store'
+import { getTrayPosition, store } from '../utils/store'
 import React from 'react'
 import chevron from '../images/chevron.svg'
+import { Icon } from './Icon'
 
 export function TrayContent() {
     return (
@@ -19,12 +20,9 @@ export function TrayContent() {
                 </TrayContentDiv>
             </TrayContentWrapper>
             <OpenCloseHandle onClick={handleHandleClick}>
-                <Chevron
-                    style={chevronStyle()}
-                    src={chevron}
-                    alt='open/close'
-                    width={consts.iconSmall}
-                />
+                <Chevron style={chevronStyle()}>
+                    <Icon src={chevron} alt='open/close' size='small' />
+                </Chevron>
             </OpenCloseHandle>
         </Tray>
     )
@@ -36,7 +34,7 @@ export function TrayContent() {
 
     function style(): React.CSSProperties {
         return {
-            height: `${store.state.getTrayPosition()}px`,
+            height: `${getTrayPosition()}px`,
         }
     }
 
@@ -80,6 +78,6 @@ const OpenCloseHandle = styled.div`
     }
 `
 
-const Chevron = styled.img`
+const Chevron = styled.div`
     transition: ${consts.transition}ms;
 `

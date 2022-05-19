@@ -7,6 +7,7 @@ import { createChord } from '../helpers/createChord'
 import { store } from '../utils/store'
 import { playChord } from '../helpers/playChords'
 import * as Tone from 'tone'
+import { saveHistory } from '../utils/undo'
 
 export function AddChord() {
     if (store.state.chords.length >= consts.maxBodyWidth) return <></>
@@ -21,6 +22,7 @@ export function AddChord() {
         const chord = createChord()
         store.state.chords.push(chord)
         playChord(chord, Tone.now(), consts.chordPreviewDuration)
+        saveHistory()
     }
 }
 

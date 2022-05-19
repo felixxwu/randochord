@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import React from 'react'
 import consts from '../utils/consts'
+import { store } from '../utils/store'
 
 export function Button(props: {
     text?: string
@@ -18,6 +19,7 @@ export function Button(props: {
             alt='icon'
             draggable={false}
             width={props.small ? consts.iconSmall : consts.iconLarge}
+            style={{ filter: `invert(1) brightness(${consts.lightTheme.textLightness / 100})` }}
         />
     ) : (
         props.text
@@ -41,21 +43,22 @@ export function Button(props: {
         return {
             backgroundColor: props.highlighted ? '#e6fff9' : undefined,
             height: `${props.small ? consts.smallButtonHeight : consts.buttonHeight}px`,
+            boxShadow: `inset 0 0 20px 0 ${store.state.theme.shadowColour}`,
         }
     }
 }
 
 const ButtonDiv = styled.div`
+    color: ${consts.lightTheme.textColour};
     display: flex;
     align-items: center;
     justify-content: center;
     width: ${consts.buttonWidth}px;
     border-radius: ${consts.borderRadius}px;
-    box-shadow: inset 0 0 ${consts.shadowBlur}px 0 ${consts.shadowColor};
     cursor: pointer;
     transition: ${consts.shortTransition}ms;
     overflow: hidden;
-    background-color: #e6f8ff;
+    background-color: var(--buttonColour);
 
     &:hover {
         background-color: #ffe6e6;

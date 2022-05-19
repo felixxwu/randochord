@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import React, { useEffect, useRef, useState } from 'react'
 import { useEvents } from '../helpers/useEvents'
+import { store } from '../utils/store'
+import consts from '../utils/consts'
 
 const dragSensitivity = 0.3
 const maxAngle = 130
@@ -39,15 +41,9 @@ export function Knob(props: {
 
     return (
         <KnobDiv>
-            <svg
-                style={svgStyle()}
-                onWheel={handleWheel}
-                ref={knobRef}
-                viewBox='0 0 100 100'
-                width='80px'
-            >
-                <KnobCircle cx='50' cy='50' r='30' />
-                <KnobLine x1='50' y1='35' x2='50' y2='28' />
+            <svg style={svgStyle()} onWheel={handleWheel} ref={knobRef} viewBox='0 0 100 100' width='80px'>
+                <KnobCircle cx='50' cy='50' r='30' fill={store.state.theme.knobColour} />
+                <KnobLine x1='50' y1='35' x2='50' y2='28' stroke={store.state.theme.knobLineColour} />
             </svg>
             {props.text}
         </KnobDiv>
@@ -55,9 +51,7 @@ export function Knob(props: {
 
     function svgStyle(): React.CSSProperties {
         return {
-            transform: `rotate(${
-                -maxAngle + (Math.round(value) / props.divisions) * (maxAngle * 2)
-            }deg)`,
+            transform: `rotate(${-maxAngle + (Math.round(value) / props.divisions) * (maxAngle * 2)}deg)`,
         }
     }
 
@@ -103,12 +97,12 @@ const KnobDiv = styled.div`
 `
 
 const KnobCircle = styled.circle`
-    fill: #b89a9a;
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.15));
+    transition: ${consts.transition}ms;
 `
 
 const KnobLine = styled.line`
-    stroke: #ffffff;
     stroke-width: 7px;
     stroke-linecap: round;
+    transition: ${consts.transition}ms;
 `

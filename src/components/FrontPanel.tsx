@@ -6,10 +6,12 @@ import { store } from '../utils/store'
 import { ChordButton } from './ChordButton'
 import { AddChord } from './AddChord'
 import { PlayStopButton } from './PlayStopButton'
+import { Toolbar } from './Toolbar'
 
 export function FrontPanel() {
     return (
         <FrontPanelDiv style={frontPanelStyle()}>
+            <Toolbar />
             <ControlRow>
                 <PlayStopButton />
                 <BPMKnob>
@@ -39,7 +41,10 @@ export function FrontPanel() {
     )
 
     function frontPanelStyle(): React.CSSProperties {
-        return {}
+        return {
+            backgroundColor: store.state.theme.frontPanelColour,
+            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${store.state.theme.shadowColour}`,
+        }
     }
 }
 
@@ -50,8 +55,7 @@ const FrontPanelDiv = styled.div`
     padding: 20px;
     box-sizing: border-box;
     border-radius: ${consts.borderRadius}px;
-    background-color: #fbfbfb;
-    box-shadow: 0 0 ${consts.shadowBlur}px 0 ${consts.shadowColor};
+    transition: ${consts.transition}ms;
 
     > * + * {
         margin-top: ${consts.margin}px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React from 'react'
 import consts from '../utils/consts'
-import { store } from '../utils/store'
+import { getTrayPosition, store } from '../utils/store'
 import { FrontPanel } from './FrontPanel'
 import { TrayContent } from './TrayContent'
 
@@ -20,15 +20,15 @@ export function Body() {
         )
         return {
             width: `${unitSpaces * (consts.buttonWidth + consts.margin) + consts.margin}px`,
-            height: `${consts.panelHeight + store.state.getTrayPosition()}px`,
+            height: `${consts.panelHeight + getTrayPosition()}px`,
+            backgroundColor: store.state.theme.trayColour,
+            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${store.state.theme.shadowColour}`,
         }
     }
 }
 
 const Tray = styled.div`
     border-radius: ${consts.borderRadius}px;
-    box-shadow: 0 0 ${consts.shadowBlur}px 0 ${consts.shadowColor};
     overflow: hidden;
-    background-color: #fff0f0;
     transition: ${consts.transition}ms;
 `

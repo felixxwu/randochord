@@ -10,16 +10,12 @@ import { Chord } from '@tonaljs/tonal'
 import { getNoteName } from '../helpers/getNoteName'
 import * as Tone from 'tone'
 import shuffle from '../images/shuffle.svg'
+import { saveHistory } from '../utils/undo'
 
 export function ChordButton(props: { chord: ChordType; index: number }) {
     return (
         <ChordDiv>
-            <Button
-                icon={shuffle}
-                small={true}
-                onClick={handleRetry}
-                highlighted={isCurrentlyPlaying()}
-            />
+            <Button icon={shuffle} small={true} onClick={handleRetry} highlighted={isCurrentlyPlaying()} />
             <Button
                 text={getChordText()}
                 small={false}
@@ -47,6 +43,7 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
         const chord = createChord()
         store.state.chords[props.index] = chord
         playChord(chord, Tone.now(), consts.chordPreviewDuration)
+        saveHistory()
     }
 
     function getChordText() {

@@ -1,11 +1,17 @@
 import { Body } from './Body'
 import styled from 'styled-components'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { onStoreUpdate, store } from '../utils/store'
+import consts from '../utils/consts'
+import { initHistory } from '../utils/undo'
 
 export default function App() {
     store.subscribeToAll()
     onStoreUpdate()
+
+    useEffect(() => {
+        initHistory()
+    }, [])
 
     return (
         <AppDiv style={style()}>
@@ -14,7 +20,10 @@ export default function App() {
     )
 
     function style(): React.CSSProperties {
-        return {}
+        return {
+            color: store.state.theme.textColour,
+            backgroundColor: store.state.theme.bgColour,
+        }
     }
 }
 
@@ -24,5 +33,5 @@ const AppDiv = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ededed;
+    transition: ${consts.transition}ms;
 `
