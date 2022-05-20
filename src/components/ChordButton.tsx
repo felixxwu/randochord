@@ -15,7 +15,6 @@ import { saveHistory } from '../utils/undo'
 export function ChordButton(props: { chord: ChordType; index: number }) {
     return (
         <ChordDiv>
-            <Button icon={shuffle} small={true} onClick={handleRetry} highlighted={isCurrentlyPlaying()} />
             <Button
                 text={getChordText()}
                 small={false}
@@ -24,6 +23,7 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
                 highlighted={isCurrentlyPlaying()}
                 menu={menu()}
             />
+            <Button icon={shuffle} small={true} onClick={handleRetry} highlighted={isCurrentlyPlaying()} />
         </ChordDiv>
     )
 

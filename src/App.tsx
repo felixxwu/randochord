@@ -1,9 +1,9 @@
-import { Body } from './Body'
+import { Body } from './viewsDesktop/Body'
 import styled from 'styled-components'
 import React, { useEffect } from 'react'
-import { getTheme, onStoreUpdate, store } from '../utils/store'
-import consts from '../utils/consts'
-import { initHistory } from '../utils/undo'
+import { getTheme, onStoreUpdate, store } from './utils/store'
+import consts from './utils/consts'
+import { initHistory } from './utils/undo'
 
 export default function App() {
     store.subscribeToAll()

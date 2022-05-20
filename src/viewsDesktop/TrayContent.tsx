@@ -3,7 +3,7 @@ import consts from '../utils/consts'
 import { getTrayPosition, store } from '../utils/store'
 import React from 'react'
 import chevron from '../images/chevron.svg'
-import { Icon } from './Icon'
+import { Icon } from '../components/Icon'
 
 export function TrayContent() {
     return (

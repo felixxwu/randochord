@@ -94,6 +94,7 @@ const KnobDiv = styled.div`
     align-items: center;
     justify-content: center;
     cursor: s-resize;
+    max-height: ${consts.buttonHeight}px;
 `
 
 const KnobCircle = styled.circle`

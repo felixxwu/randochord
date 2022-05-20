@@ -29,7 +29,7 @@ export function AddChord() {
 const ChordDiv = styled.div`
     display: flex;
     flex-direction: column;
-    padding-top: ${consts.smallButtonHeight + consts.margin}px;
+    padding-bottom: ${consts.smallButtonHeight + consts.margin}px;
 
     > * + * {
         margin-top: ${consts.margin}px;

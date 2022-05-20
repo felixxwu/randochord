@@ -79,7 +79,7 @@ export function Button(props: {
 
     function updateScale() {
         if (text.current === null) return
-        const newScale = 100 / (text.current.clientWidth + consts.margin)
+        const newScale = consts.buttonWidth / (text.current.clientWidth + consts.margin)
         setTextScale(Math.min(newScale, 1))
     }
 }
