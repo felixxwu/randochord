@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { useEffect, useRef, useState } from 'react'
 import consts from '../utils/consts'
-import { store } from '../utils/store'
+import { getTheme } from '../utils/store'
 import { Menu } from './Menu'
 
 export function Button(props: {
@@ -59,9 +59,9 @@ export function Button(props: {
 
     function style(): React.CSSProperties {
         return {
-            backgroundColor: props.highlighted ? '#e6fff9' : undefined,
+            backgroundColor: props.highlighted ? getTheme().buttonPlaybackColour : undefined,
             height: `${props.small ? consts.smallButtonHeight : consts.buttonHeight}px`,
-            boxShadow: `inset 0 0 20px 0 ${store.state.theme.shadowColour}`,
+            boxShadow: `inset 0 0 20px 0 ${getTheme().shadowColour}`,
         }
     }
 
@@ -97,6 +97,6 @@ const ButtonDiv = styled.div`
     background-color: var(--buttonColour);
 
     &:hover {
-        background-color: #ffe6e6;
+        background-color: var(--buttonHighlightColour);
     }
 `

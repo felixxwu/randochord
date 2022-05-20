@@ -10,7 +10,7 @@ export const store = createStore({
     bpm: 120,
     chords: <ChordType[]>[],
     currentlyPlayingChord: <number | null>null,
-    theme: consts.lightTheme,
+    darkMode: false,
 })
 
 loadFromLocalStorage()
@@ -18,12 +18,18 @@ loadFromLocalStorage()
 export function onStoreUpdate() {
     saveToLocalStorage()
     updateClockBpm()
-    document.documentElement.style.setProperty('--buttonColour', store.state.theme.buttonColour)
-    document.documentElement.style.setProperty('--highlight', store.state.theme.highlight)
+    document.documentElement.style.setProperty('--buttonColour', getTheme().buttonColour)
+    document.documentElement.style.setProperty('--buttonHighlightColour', getTheme().buttonHighlightColour)
+    document.documentElement.style.setProperty('--buttonPlaybackColour', getTheme().buttonPlaybackColour)
+    document.documentElement.style.setProperty('--highlight', getTheme().highlight)
 }
 
 export type StoreType = typeof store.state
 
 export function getTrayPosition() {
     return consts.trayPositions[store.state.trayOpen ? 1 : 0]
+}
+
+export function getTheme() {
+    return store.state.darkMode ? consts.darkTheme : consts.lightTheme
 }

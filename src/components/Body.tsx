@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React from 'react'
 import consts from '../utils/consts'
-import { getTrayPosition, store } from '../utils/store'
+import { getTheme, getTrayPosition, store } from '../utils/store'
 import { FrontPanel } from './FrontPanel'
 import { TrayContent } from './TrayContent'
 
@@ -14,15 +14,12 @@ export function Body() {
     )
 
     function trayStyle(): React.CSSProperties {
-        const unitSpaces = Math.max(
-            consts.minBodyWidth,
-            Math.min(store.state.chords.length + 1, consts.maxBodyWidth)
-        )
+        const unitSpaces = Math.max(consts.minBodyWidth, Math.min(store.state.chords.length + 1, consts.maxBodyWidth))
         return {
             width: `${unitSpaces * (consts.buttonWidth + consts.margin) + consts.margin}px`,
             height: `${consts.panelHeight + getTrayPosition()}px`,
-            backgroundColor: store.state.theme.trayColour,
-            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${store.state.theme.shadowColour}`,
+            backgroundColor: getTheme().trayColour,
+            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${getTheme().shadowColour}`,
         }
     }
 }

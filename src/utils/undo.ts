@@ -15,7 +15,7 @@ const config: HistoryConfig = {
     chords: true,
     masterVolume: false,
     trayOpen: false,
-    theme: false,
+    darkMode: false,
 }
 
 function getCurrentState<K extends keyof StoreType>() {

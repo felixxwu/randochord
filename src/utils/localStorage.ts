@@ -9,7 +9,7 @@ const config: StorageConfig = {
     chords: false,
     masterVolume: true,
     trayOpen: true,
-    theme: true,
+    darkMode: true,
 }
 
 export function saveToLocalStorage<K extends keyof StoreType>() {

@@ -2,7 +2,7 @@ import React from 'react'
 import consts from '../utils/consts'
 import styled from 'styled-components'
 import { Knob } from './Knob'
-import { store } from '../utils/store'
+import { getTheme, store } from '../utils/store'
 import { ChordButton } from './ChordButton'
 import { AddChord } from './AddChord'
 import { PlayStopButton } from './PlayStopButton'
@@ -42,8 +42,8 @@ export function FrontPanel() {
 
     function frontPanelStyle(): React.CSSProperties {
         return {
-            backgroundColor: store.state.theme.frontPanelColour,
-            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${store.state.theme.shadowColour}`,
+            backgroundColor: getTheme().frontPanelColour,
+            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${getTheme().shadowColour}`,
         }
     }
 }

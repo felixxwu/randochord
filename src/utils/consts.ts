@@ -6,6 +6,8 @@ type Theme = {
     textColour: string
     toolbarColour: string
     buttonColour: string
+    buttonHighlightColour: string
+    buttonPlaybackColour: string
     shadowColour: string
     knobColour: string
     knobLineColour: string
@@ -17,19 +19,21 @@ export default {
     shadowColor: 'rgba(0, 0, 0, 0.1)',
     get lightTheme(): Theme {
         return {
-            bgColour: '#ededed',
+            bgColour: '#e6e6e6',
             frontPanelColour: '#fbfbfb',
-            trayColour: '#fff0f0',
+            trayColour: '#f2f2f2',
             textLightness: 40,
             get textColour() {
                 return `hsl(0, 0%, ${this.textLightness}%)`
             },
-            toolbarColour: '#fff0f0',
-            buttonColour: '#e6f9ff',
+            toolbarColour: '#f2f2f2',
+            buttonColour: '#d9f7ff',
             shadowColour: 'rgba(0, 0, 0, 0.1)',
-            knobColour: '#ccb8b8',
-            knobLineColour: '#ffffff',
+            knobColour: '#f2f2f2',
+            knobLineColour: '#666666',
             highlight: 'rgba(0, 0, 0, 0.03)',
+            buttonHighlightColour: '#fbfbfb',
+            buttonPlaybackColour: '#fbfbfb',
         }
     },
     get darkTheme(): Theme {
@@ -41,12 +45,14 @@ export default {
             get textColour() {
                 return `hsl(0, 0%, ${this.textLightness}%)`
             },
-            toolbarColour: '#454545',
-            buttonColour: '#9bc1cc',
+            toolbarColour: '#404040',
+            buttonColour: '#adc5cc',
             shadowColour: 'rgba(0, 0, 0, 0.4)',
-            knobColour: '#807373',
-            knobLineColour: '#454545',
+            knobColour: '#404040',
+            knobLineColour: '#bfbfbf',
             highlight: 'rgba(0, 0, 0, 0.15)',
+            buttonHighlightColour: '#e6e6e6',
+            buttonPlaybackColour: '#e6e6e6',
         }
     },
 
@@ -72,7 +78,7 @@ export default {
     // numbers
     maxMasterVolume: 100,
     minBpm: 50,
-    maxBpm: 300,
+    maxBpm: 250,
     chordDuration: 0.9, // % of bar length
     minBodyWidth: 4,
     maxBodyWidth: 8,

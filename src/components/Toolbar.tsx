@@ -6,7 +6,7 @@ import clear from '../images/clear.svg'
 import theme from '../images/theme.svg'
 import download from '../images/download.svg'
 import { Icon } from './Icon'
-import { store } from '../utils/store'
+import { getTheme, store } from '../utils/store'
 import React from 'react'
 import { canRedo, canUndo, redo, saveHistory, undo } from '../utils/undo'
 import { downloadMidi } from '../helpers/midi'
@@ -35,17 +35,12 @@ export function Toolbar() {
 
     function style(): React.CSSProperties {
         return {
-            backgroundColor: store.state.theme.toolbarColour,
+            backgroundColor: getTheme().toolbarColour,
         }
     }
 
     function changeTheme() {
-        const isLight = JSON.stringify(store.state.theme) === JSON.stringify(consts.lightTheme)
-        if (isLight) {
-            store.state.theme = consts.darkTheme
-        } else {
-            store.state.theme = consts.lightTheme
-        }
+        store.state.darkMode = !store.state.darkMode
     }
 
     function clearChords() {
