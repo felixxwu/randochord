@@ -12,7 +12,6 @@ export function paste(index: number) {
     if (clipboard !== null) {
         store.state.chords[index] = clipboard
         store.state.chordInClipboard = null
-        clipboard = null
         store.saveHistory()
     }
 }
