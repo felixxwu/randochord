@@ -14,15 +14,15 @@ export function Menu(props: { menu: { text: string; callback: () => void }[]; cl
         }, 50)
     }, [])
 
-    const menuItems = (props.menu ?? []).map((item, index) => (
-        <MenuItem onClick={item.callback} key={index}>
-            {item.text}
-        </MenuItem>
-    ))
-
     return (
-        <MenuCloser onClick={handleClose}>
-            <MenuDiv style={style()}>{menuItems}</MenuDiv>
+        <MenuCloser onClick={handleClose} onContextMenu={handleContextMenu}>
+            <MenuDiv style={style()}>
+                {(props.menu ?? []).map((item, index) => (
+                    <MenuItem onClick={item.callback} key={index}>
+                        {item.text}
+                    </MenuItem>
+                ))}
+            </MenuDiv>
         </MenuCloser>
     )
 
@@ -40,6 +40,11 @@ export function Menu(props: { menu: { text: string; callback: () => void }[]; cl
         setTransition(0)
         props.closeMenu()
     }
+
+    function handleContextMenu(event: React.MouseEvent) {
+        event.preventDefault()
+        handleClose()
+    }
 }
 
 const MenuCloser = styled.div`
@@ -52,7 +57,7 @@ const MenuCloser = styled.div`
 
 const MenuDiv = styled.div`
     width: max-content;
-    transform: translateY(calc(100vh - 100% - ${consts.margin}px)) translateX(100vw);
+    transform: translateY(calc(100vh)) translateX(100vw);
     border-radius: ${consts.borderRadius}px;
     cursor: pointer;
     overflow: hidden;
