@@ -10,6 +10,7 @@ export const store = createStore(
         bpm: 120,
         chords: <ChordType[]>[],
         currentlyPlayingChord: <number | null>null,
+        chordInClipboard: <number | null>null,
         darkMode: false,
     },
     {

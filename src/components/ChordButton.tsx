@@ -10,6 +10,7 @@ import { Chord } from '@tonaljs/tonal'
 import { getNoteName } from '../helpers/getNoteName'
 import * as Tone from 'tone'
 import shuffle from '../images/shuffle.svg'
+import { copy, paste } from '../utils/copyChord'
 
 export function ChordButton(props: { chord: ChordType; index: number }) {
     return (
@@ -20,6 +21,7 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
                 onPointerDown={handlePlay}
                 onPointerUp={handleStop}
                 highlighted={isCurrentlyPlaying()}
+                outline={props.index === store.state.chordInClipboard}
                 menu={menu()}
             />
             <Button icon={shuffle} small={true} onClick={handleRetry} highlighted={isCurrentlyPlaying()} />
@@ -53,8 +55,8 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
 
     function menu() {
         return [
-            { text: 'Copy', callback: () => console.log('copy') },
-            { text: 'Paste', callback: () => console.log('paste') },
+            { text: 'Copy', callback: () => copy(props.index) },
+            { text: 'Paste', callback: () => paste(props.index) },
             { text: 'Delete', callback: deleteChord },
         ]
     }

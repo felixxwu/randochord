@@ -66,6 +66,7 @@ export default {
     buttonWidth: 100,
     buttonHeight: 100,
     smallButtonHeight: 35,
+    buttonBorderWidth: 3,
     get panelHeight() {
         return this.buttonHeight * 2 + this.smallButtonHeight * 2 + this.margin * 5
     },

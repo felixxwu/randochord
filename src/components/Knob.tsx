@@ -43,7 +43,8 @@ export function Knob(props: {
         <KnobDiv>
             <svg style={svgStyle()} onWheel={handleWheel} ref={knobRef} viewBox='0 0 100 100' width='80px'>
                 <KnobCircle cx='50' cy='50' r='30' fill={getTheme().knobColour} stroke={getTheme().knobLineColour} />
-                <KnobLine x1='50' y1='35' x2='50' y2='22' stroke={getTheme().knobLineColour} />
+                <KnobCircle cx='50' cy='50' r='11' fill={getTheme().knobLineColour} />
+                <KnobLine x1='50' y1='50' x2='50' y2='21' stroke={getTheme().knobLineColour} />
             </svg>
             {props.text}
         </KnobDiv>

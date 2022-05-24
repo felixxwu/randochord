@@ -13,6 +13,7 @@ export function Button(props: {
     onPointerDown?: () => void
     onPointerUp?: () => void
     highlighted?: boolean
+    outline?: boolean
     menu?: { text: string; callback: () => void }[]
 }) {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -62,6 +63,7 @@ export function Button(props: {
             backgroundColor: props.highlighted ? getTheme().buttonPlaybackColour : undefined,
             height: `${props.small ? consts.smallButtonHeight : consts.buttonHeight}px`,
             boxShadow: `inset 0 0 20px 0 ${getTheme().shadowColour}`,
+            outline: props.outline ? `dashed ${consts.buttonBorderWidth}px` : 'none',
         }
     }
 
@@ -95,6 +97,8 @@ const ButtonDiv = styled.div`
     transition: ${consts.shortTransition}ms;
     overflow: hidden;
     background-color: var(--buttonColour);
+    box-sizing: border-box;
+    outline-offset: -${consts.buttonBorderWidth}px;
 
     &:hover {
         background-color: var(--buttonHighlightColour);
