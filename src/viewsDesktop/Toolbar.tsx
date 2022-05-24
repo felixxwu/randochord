@@ -62,7 +62,7 @@ const ToolbarDiv = styled.div`
 const Title = styled.div`
     flex: 1;
     text-transform: uppercase;
-    letter-spacing: 10px;
+    letter-spacing: ${consts.titleSpacing}px;
 `
 
 const Button = styled.div`

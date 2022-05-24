@@ -23,13 +23,15 @@ export function FrontPanel() {
                         onTurn={value => (store.state.bpm = value + consts.minBpm)}
                     />
                 </BPMKnob>
-                <Knob
-                    text={`Vol. ${store.state.masterVolume}`}
-                    divisions={100}
-                    scrollStep={5}
-                    value={store.state.masterVolume}
-                    onTurn={value => (store.state.masterVolume = value)}
-                />
+                <VolKnob>
+                    <Knob
+                        text={`Vol. ${store.state.masterVolume}`}
+                        divisions={100}
+                        scrollStep={5}
+                        value={store.state.masterVolume}
+                        onTurn={value => (store.state.masterVolume = value)}
+                    />
+                </VolKnob>
             </ControlRow>
             <ChordRow>
                 {store.state.chords.map((chord, index) => (
@@ -75,6 +77,7 @@ const ControlRow = styled.div`
 const ChordRow = styled.div`
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 
     > * + * {
@@ -84,4 +87,9 @@ const ChordRow = styled.div`
 
 const BPMKnob = styled.div`
     margin-left: auto;
+    width: ${consts.buttonWidth}px;
+`
+
+const VolKnob = styled.div`
+    width: ${consts.buttonWidth}px;
 `

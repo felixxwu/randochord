@@ -12,6 +12,8 @@ export const store = createStore(
         currentlyPlayingChord: <number | null>null,
         chordInClipboard: <number | null>null,
         darkMode: false,
+        appWidth: window.innerWidth,
+        appHeight: window.innerHeight,
     },
     {
         localStorage: { keys: ['bpm', 'masterVolume', 'trayOpen', 'darkMode'] },
