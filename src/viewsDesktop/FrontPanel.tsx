@@ -77,7 +77,6 @@ const ControlRow = styled.div`
 const ChordRow = styled.div`
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
 
     > * + * {

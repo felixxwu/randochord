@@ -1,6 +1,6 @@
 import { createStore } from 'truly-global-state'
 import consts from './consts'
-import { ChordType } from './types'
+import { ChordType, TabType } from './types'
 import { updateClockBpm } from '../helpers/clock'
 
 export const store = createStore(
@@ -14,9 +14,10 @@ export const store = createStore(
         darkMode: false,
         appWidth: window.innerWidth,
         appHeight: window.innerHeight,
+        currentTab: <TabType>'midi',
     },
     {
-        localStorage: { keys: ['bpm', 'masterVolume', 'trayOpen', 'darkMode'] },
+        localStorage: { keys: ['bpm', 'masterVolume', 'trayOpen', 'darkMode', 'currentTab'] },
         undoRedo: { keys: ['chords'], useLocalStorage: true, maxLength: 1000 },
     }
 )

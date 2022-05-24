@@ -72,6 +72,7 @@ const Button = styled.div`
     height: 100%;
     width: ${consts.smallButtonHeight}px;
     cursor: pointer;
+    transition: ${consts.shortTransition}ms;
 
     &:hover {
         background-color: var(--highlight);

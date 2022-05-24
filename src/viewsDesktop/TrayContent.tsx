@@ -4,20 +4,17 @@ import { getTrayPosition, store } from '../utils/store'
 import React from 'react'
 import chevron from '../images/chevron.svg'
 import { Icon } from '../components/Icon'
+import { TabSwitcher } from './TabSwitcher'
 
 export function TrayContent() {
     return (
         <Tray style={style()}>
             <TrayContentWrapper>
-                <TrayContentDiv>
-                    work in progress
-                    <br />
-                    work in progress
-                    <br />
-                    work in progress
-                    <br />
-                    work in progress
-                </TrayContentDiv>
+                <TrayFloatBottom>
+                    <TrayContentDiv>
+                        <TabSwitcher />
+                    </TrayContentDiv>
+                </TrayFloatBottom>
             </TrayContentWrapper>
             <OpenCloseHandle onClick={handleHandleClick}>
                 <Chevron style={chevronStyle()}>
@@ -58,9 +55,16 @@ const TrayContentWrapper = styled.div`
     min-height: 0;
 `
 
-const TrayContentDiv = styled.div`
+const TrayFloatBottom = styled.div`
     position: absolute;
     bottom: 0;
+    width: 100%;
+`
+
+const TrayContentDiv = styled.div`
+    position: relative;
+    width: 100%;
+    height: ${consts.trayPositions[1] - consts.trayPositions[0]}px;
 `
 
 const OpenCloseHandle = styled.div`

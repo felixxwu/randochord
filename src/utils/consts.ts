@@ -59,7 +59,7 @@ export default {
     // lengths
     shadowBlur: 50,
     borderRadius: 10,
-    trayPositions: [50, 200],
+    trayPositions: [50, 250],
     iconLarge: 30,
     iconSmall: 15,
     margin: 20,
@@ -67,6 +67,8 @@ export default {
     buttonHeight: 100,
     smallButtonHeight: 35,
     buttonBorderWidth: 3,
+    tabBorderWidth: 1,
+    tabHeight: 25,
     maxMobileWidth: 1000,
     titleSpacing: 10,
     get panelHeight() {
