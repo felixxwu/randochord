@@ -29,4 +29,5 @@ const AppDiv = styled.div`
     justify-content: center;
     align-items: center;
     transition: ${consts.transition}ms;
+    touch-action: none;
 `

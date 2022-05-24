@@ -19,7 +19,7 @@ export function Knob(props: {
     const knobRef = useRef<SVGSVGElement>(null)
     const [value, setValue] = useState(props.value)
 
-    useEvents(window.document.body, [
+    useEvents(window.document.documentElement, [
         { type: 'pointerdown', handler: handlePointerDown },
         { type: 'pointermove', handler: handlePointerMove },
         { type: 'pointerup', handler: handlePointerUp },
@@ -36,7 +36,7 @@ export function Knob(props: {
         setTimeout(() => {
             if (Math.round(value) === Math.round(props.value)) return
             setValue(props.value)
-        })
+        }, 10)
     }, [props.value])
 
     return (
