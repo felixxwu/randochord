@@ -2,29 +2,26 @@ import { createStore } from 'truly-global-state'
 import consts from './consts'
 import { ChordType } from './types'
 import { updateClockBpm } from '../helpers/clock'
-import { loadFromLocalStorage, saveToLocalStorage } from './localStorage'
 
-export const store = createStore({
-    trayOpen: false,
-    masterVolume: consts.maxMasterVolume,
-    bpm: 120,
-    chords: <ChordType[]>[],
-    currentlyPlayingChord: <number | null>null,
-    darkMode: false,
-})
-
-loadFromLocalStorage()
+export const store = createStore(
+    {
+        trayOpen: false,
+        masterVolume: consts.maxMasterVolume,
+        bpm: 120,
+        chords: <ChordType[]>[],
+        currentlyPlayingChord: <number | null>null,
+        darkMode: false,
+    },
+    {
+        localStorage: { keys: ['bpm', 'masterVolume', 'trayOpen', 'darkMode'] },
+        undoRedo: { keys: ['chords'], useLocalStorage: true, maxLength: 1000 },
+    }
+)
 
 export function onStoreUpdate() {
-    saveToLocalStorage()
     updateClockBpm()
-    document.documentElement.style.setProperty('--buttonColour', getTheme().buttonColour)
-    document.documentElement.style.setProperty('--buttonHighlightColour', getTheme().buttonHighlightColour)
-    document.documentElement.style.setProperty('--buttonPlaybackColour', getTheme().buttonPlaybackColour)
-    document.documentElement.style.setProperty('--highlight', getTheme().highlight)
+    makeCssVarsFromTheme()
 }
-
-export type StoreType = typeof store.state
 
 export function getTrayPosition() {
     return consts.trayPositions[store.state.trayOpen ? 1 : 0]
@@ -32,4 +29,12 @@ export function getTrayPosition() {
 
 export function getTheme() {
     return store.state.darkMode ? consts.darkTheme : consts.lightTheme
+}
+
+function makeCssVarsFromTheme() {
+    const theme = getTheme()
+    for (const key in theme) {
+        const k = key as keyof typeof theme
+        document.documentElement.style.setProperty(`--${key}`, `${theme[k]}`)
+    }
 }

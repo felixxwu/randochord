@@ -1,17 +1,12 @@
 import { Body } from './viewsDesktop/Body'
 import styled from 'styled-components'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { getTheme, onStoreUpdate, store } from './utils/store'
 import consts from './utils/consts'
-import { initHistory } from './utils/undo'
 
 export default function App() {
     store.subscribeToAll()
     onStoreUpdate()
-
-    useEffect(() => {
-        initHistory()
-    }, [])
 
     return (
         <AppDiv style={style()}>

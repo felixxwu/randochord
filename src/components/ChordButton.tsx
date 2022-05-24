@@ -10,7 +10,6 @@ import { Chord } from '@tonaljs/tonal'
 import { getNoteName } from '../helpers/getNoteName'
 import * as Tone from 'tone'
 import shuffle from '../images/shuffle.svg'
-import { saveHistory } from '../utils/undo'
 
 export function ChordButton(props: { chord: ChordType; index: number }) {
     return (
@@ -44,7 +43,7 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
         const chord = createChord()
         store.state.chords[props.index] = chord
         playChord(chord, Tone.now(), consts.chordPreviewDuration)
-        saveHistory()
+        store.saveHistory()
     }
 
     function getChordText() {
@@ -62,7 +61,7 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
 
     function deleteChord() {
         store.state.chords.splice(props.index, 1)
-        saveHistory()
+        store.saveHistory()
     }
 }
 

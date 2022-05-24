@@ -8,17 +8,16 @@ import download from '../images/download.svg'
 import { Icon } from '../components/Icon'
 import { getTheme, store } from '../utils/store'
 import React from 'react'
-import { canRedo, canUndo, redo, saveHistory, undo } from '../utils/undo'
 import { downloadMidi } from '../helpers/midi'
 
 export function Toolbar() {
     return (
         <ToolbarDiv style={style()}>
             <Title>RandoChord</Title>
-            <Button onClick={undo} data-disabled={!canUndo()}>
+            <Button onClick={store.undo} data-disabled={!store.canUndo()}>
                 <Icon src={undoIcon} alt='undo' size='small' />
             </Button>
-            <Button onClick={redo} data-disabled={!canRedo()}>
+            <Button onClick={store.redo} data-disabled={!store.canRedo()}>
                 <Icon src={redoIcon} alt='redo' size='small' />
             </Button>
             <Button onClick={changeTheme}>
@@ -45,7 +44,7 @@ export function Toolbar() {
 
     function clearChords() {
         store.state.chords = []
-        saveHistory()
+        store.saveHistory()
     }
 }
 
