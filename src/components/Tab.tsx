@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import consts from '../utils/consts'
 import { TabType } from '../utils/types'
 import React from 'react'
-import { getTheme, store } from '../utils/store'
+import { compute, store } from '../utils/store'
 
 export function Tab(props: { type: TabType }) {
     return (
@@ -24,7 +24,7 @@ export function Tab(props: { type: TabType }) {
     function style(): React.CSSProperties {
         return {
             outline: `${consts.tabBorderWidth}px solid ${
-                store.state.currentTab === props.type ? getTheme().textColour : 'transparent'
+                store.state.currentTab === props.type ? compute.theme.textColour : 'transparent'
             }`,
         }
     }

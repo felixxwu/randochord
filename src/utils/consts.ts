@@ -59,7 +59,7 @@ export default {
     // lengths
     shadowBlur: 50,
     borderRadius: 10,
-    trayPositions: [50, 250],
+    trayPositions: [50, 300],
     iconLarge: 30,
     iconSmall: 15,
     margin: 20,
@@ -87,4 +87,6 @@ export default {
     chordDuration: 0.9, // % of bar length
     minBodyWidth: 4,
     maxBodyWidth: 8,
+    numNotes: 24,
+    lowestNote: 36,
 }

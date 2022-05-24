@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import consts from '../utils/consts'
-import { getTrayPosition, store } from '../utils/store'
+import { compute, store } from '../utils/store'
 import React from 'react'
 import chevron from '../images/chevron.svg'
 import { Icon } from '../components/Icon'
@@ -30,7 +30,7 @@ export function TrayContent() {
 
     function style(): React.CSSProperties {
         return {
-            height: `${getTrayPosition()}px`,
+            height: `${compute.trayPosition}px`,
         }
     }
 
@@ -64,7 +64,7 @@ const TrayFloatBottom = styled.div`
 const TrayContentDiv = styled.div`
     position: relative;
     width: 100%;
-    height: ${consts.trayPositions[1] - consts.trayPositions[0]}px;
+    height: ${compute.trayHeight}px;
 `
 
 const OpenCloseHandle = styled.div`

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { useEffect, useState } from 'react'
 import consts from '../utils/consts'
-import { getTheme, getTrayPosition, store } from '../utils/store'
+import { compute } from '../utils/store'
 import { FrontPanel } from './FrontPanel'
 import { TrayContent } from './TrayContent'
 
@@ -28,16 +28,14 @@ export function Body() {
     )
 
     function trayStyle(): React.CSSProperties {
-        const unitSpaces = Math.max(consts.minBodyWidth, Math.min(store.state.chords.length + 1, consts.maxBodyWidth))
-        const fullWidth = unitSpaces * (consts.buttonWidth + consts.margin) + consts.margin
-        const fullHeight = isBlank ? consts.panelHeight : consts.panelHeight + getTrayPosition()
+        const fullHeight = isBlank ? consts.panelHeight : consts.panelHeight + compute.trayPosition
         return {
-            width: `${isSmall ? 50 : fullWidth}px`,
+            width: `${isSmall ? 50 : compute.bodyWidth}px`,
             height: `${isSmall ? 50 : fullHeight}px`,
-            backgroundColor: getTheme().trayColour,
-            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${getTheme().shadowColour}`,
+            backgroundColor: compute.theme.trayColour,
+            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${compute.theme.shadowColour}`,
             borderRadius: `${isSmall ? 100 : consts.borderRadius}px`,
-            border: `solid ${isSmall ? getTheme().knobLineColour : 'transparent'} ${isSmall ? 2 : 0}px`,
+            border: `solid ${isSmall ? compute.theme.knobLineColour : 'transparent'} ${isSmall ? 2 : 0}px`,
         }
     }
 

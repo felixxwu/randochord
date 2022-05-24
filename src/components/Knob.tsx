@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { useEffect, useRef, useState } from 'react'
 import { useEvents } from '../helpers/useEvents'
-import { getTheme } from '../utils/store'
+import { compute } from '../utils/store'
 import consts from '../utils/consts'
 
 const dragSensitivity = 0.3
@@ -42,9 +42,15 @@ export function Knob(props: {
     return (
         <KnobDiv>
             <svg style={svgStyle()} onWheel={handleWheel} ref={knobRef} viewBox='0 0 100 100' width='80px'>
-                <KnobCircle cx='50' cy='50' r='30' fill={getTheme().knobColour} stroke={getTheme().knobLineColour} />
-                <KnobCircle cx='50' cy='50' r='10' fill={getTheme().knobLineColour} />
-                <KnobLine x1='50' y1='50' x2='50' y2='20' stroke={getTheme().knobLineColour} />
+                <KnobCircle
+                    cx='50'
+                    cy='50'
+                    r='30'
+                    fill={compute.theme.knobColour}
+                    stroke={compute.theme.knobLineColour}
+                />
+                <KnobCircle cx='50' cy='50' r='10' fill={compute.theme.knobLineColour} />
+                <KnobLine x1='50' y1='50' x2='50' y2='20' stroke={compute.theme.knobLineColour} />
             </svg>
             {props.text}
         </KnobDiv>

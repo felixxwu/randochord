@@ -6,7 +6,7 @@ import clear from '../images/clear.svg'
 import theme from '../images/theme.svg'
 import download from '../images/download.svg'
 import { Icon } from '../components/Icon'
-import { getTheme, store } from '../utils/store'
+import { compute, store } from '../utils/store'
 import React from 'react'
 import { downloadMidi } from '../helpers/midi'
 
@@ -34,7 +34,7 @@ export function Toolbar() {
 
     function style(): React.CSSProperties {
         return {
-            backgroundColor: getTheme().toolbarColour,
+            backgroundColor: compute.theme.toolbarColour,
         }
     }
 

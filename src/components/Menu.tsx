@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import consts from '../utils/consts'
-import { getTheme } from '../utils/store'
+import { compute } from '../utils/store'
 
 export function Menu(props: { menu: { text: string; callback: () => void }[]; closeMenu: () => void }) {
     const [menuHeight, setMenuHeight] = useState(0)
@@ -28,10 +28,10 @@ export function Menu(props: { menu: { text: string; callback: () => void }[]; cl
 
     function style(): React.CSSProperties {
         return {
-            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${getTheme().shadowColour}`,
+            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${compute.theme.shadowColour}`,
             maxHeight: `${menuHeight}px`,
             transition: `${transition}ms linear`,
-            backgroundColor: getTheme().frontPanelColour,
+            backgroundColor: compute.theme.frontPanelColour,
         }
     }
 

@@ -1,7 +1,7 @@
 import { Body } from './viewsDesktop/Body'
 import styled from 'styled-components'
 import React, { useEffect } from 'react'
-import { getTheme, onStoreUpdate, store } from './utils/store'
+import { compute, onStoreUpdate, store } from './utils/store'
 import consts from './utils/consts'
 import { MobileBody } from './viewsMobile/MobileBody'
 
@@ -20,9 +20,9 @@ export default function App() {
 
     function style(): React.CSSProperties {
         return {
-            color: getTheme().textColour,
+            color: compute.theme.textColour,
             backgroundColor:
-                store.state.appWidth > consts.maxMobileWidth ? getTheme().bgColour : getTheme().frontPanelColour,
+                store.state.appWidth > consts.maxMobileWidth ? compute.theme.bgColour : compute.theme.frontPanelColour,
             height: `${store.state.appHeight}px`,
         }
     }

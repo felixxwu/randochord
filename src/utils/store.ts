@@ -22,23 +22,38 @@ export const store = createStore(
     }
 )
 
+export const compute = {
+    get trayPosition() {
+        return consts.trayPositions[store.state.trayOpen ? 1 : 0]
+    },
+    get trayHeight() {
+        return consts.trayPositions[1] - consts.trayPositions[0]
+    },
+    get trayContentHeight() {
+        return compute.trayHeight - compute.tabSwitcherHeight
+    },
+    get theme() {
+        return store.state.darkMode ? consts.darkTheme : consts.lightTheme
+    },
+    get unitSpaces() {
+        return Math.max(consts.minBodyWidth, Math.min(store.state.chords.length + 1, consts.maxBodyWidth))
+    },
+    get bodyWidth() {
+        return compute.unitSpaces * (consts.buttonWidth + consts.margin) + consts.margin
+    },
+    get tabSwitcherHeight() {
+        return consts.tabHeight + 2 * consts.margin
+    },
+}
+
 export function onStoreUpdate() {
     updateClockBpm()
     makeCssVarsFromTheme()
 }
 
-export function getTrayPosition() {
-    return consts.trayPositions[store.state.trayOpen ? 1 : 0]
-}
-
-export function getTheme() {
-    return store.state.darkMode ? consts.darkTheme : consts.lightTheme
-}
-
 function makeCssVarsFromTheme() {
-    const theme = getTheme()
-    for (const key in theme) {
-        const k = key as keyof typeof theme
-        document.documentElement.style.setProperty(`--${key}`, `${theme[k]}`)
+    for (const key in compute.theme) {
+        const k = key as keyof typeof compute.theme
+        document.documentElement.style.setProperty(`--${key}`, `${compute.theme[k]}`)
     }
 }

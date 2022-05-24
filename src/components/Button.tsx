@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { useEffect, useRef, useState } from 'react'
 import consts from '../utils/consts'
-import { getTheme } from '../utils/store'
+import { compute } from '../utils/store'
 import { Menu } from './Menu'
 
 export function Button(props: {
@@ -60,9 +60,9 @@ export function Button(props: {
 
     function style(): React.CSSProperties {
         return {
-            backgroundColor: props.highlighted ? getTheme().buttonPlaybackColour : undefined,
+            backgroundColor: props.highlighted ? compute.theme.buttonPlaybackColour : undefined,
             height: `${props.small ? consts.smallButtonHeight : consts.buttonHeight}px`,
-            boxShadow: `inset 0 0 20px 0 ${getTheme().shadowColour}`,
+            boxShadow: `inset 0 0 20px 0 ${compute.theme.shadowColour}`,
             outline: props.outline ? `dashed ${consts.buttonBorderWidth}px` : 'none',
         }
     }

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import consts from '../utils/consts'
 import React from 'react'
-import { getTheme, store } from '../utils/store'
+import { compute, store } from '../utils/store'
 import { Icon } from '../components/Icon'
 import undoIcon from '../images/undo.svg'
 import redoIcon from '../images/redo.svg'
@@ -37,7 +37,7 @@ export function MobileToolbar() {
 
     function style(): React.CSSProperties {
         return {
-            backgroundColor: getTheme().toolbarColour,
+            backgroundColor: compute.theme.toolbarColour,
             width: getToolbarWidth(),
         }
     }
