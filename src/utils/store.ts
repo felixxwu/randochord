@@ -26,12 +26,6 @@ export const compute = {
     get trayPosition() {
         return consts.trayPositions[store.state.trayOpen ? 1 : 0]
     },
-    get trayHeight() {
-        return consts.trayPositions[1] - consts.trayPositions[0]
-    },
-    get trayContentHeight() {
-        return compute.trayHeight - compute.tabSwitcherHeight
-    },
     get theme() {
         return store.state.darkMode ? consts.darkTheme : consts.lightTheme
     },
@@ -40,9 +34,6 @@ export const compute = {
     },
     get bodyWidth() {
         return compute.unitSpaces * (consts.buttonWidth + consts.margin) + consts.margin
-    },
-    get tabSwitcherHeight() {
-        return consts.tabHeight + 2 * consts.margin
     },
 }
 

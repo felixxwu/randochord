@@ -64,7 +64,7 @@ const TrayFloatBottom = styled.div`
 const TrayContentDiv = styled.div`
     position: relative;
     width: 100%;
-    height: ${compute.trayHeight}px;
+    height: ${consts.trayHeight}px;
 `
 
 const OpenCloseHandle = styled.div`

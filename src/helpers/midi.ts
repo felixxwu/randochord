@@ -13,7 +13,7 @@ export function downloadMidi() {
     const blob = new Blob([midi.toArray()], { type: 'audio/mid' })
     const link = document.createElement('a')
     link.href = window.URL.createObjectURL(blob)
-    link.download = 'chords'
+    link.download = `Chords ${new Date().toDateString()} ${new Date().toLocaleTimeString()}`
     link.click()
 }
 

@@ -16,13 +16,13 @@ export default function App() {
         })
     }, [])
 
-    return <AppDiv style={style()}>{store.state.appWidth > consts.maxMobileWidth ? <Body /> : <MobileBody />}</AppDiv>
+    return <AppDiv style={style()}>{store.state.appWidth > consts.maxPanelWidth ? <Body /> : <MobileBody />}</AppDiv>
 
     function style(): React.CSSProperties {
         return {
             color: compute.theme.textColour,
             backgroundColor:
-                store.state.appWidth > consts.maxMobileWidth ? compute.theme.bgColour : compute.theme.frontPanelColour,
+                store.state.appWidth > consts.maxPanelWidth ? compute.theme.bgColour : compute.theme.frontPanelColour,
             height: `${store.state.appHeight}px`,
         }
     }

@@ -54,7 +54,7 @@ const FrontPanelDiv = styled.div`
     display: flex;
     flex-direction: column;
     height: ${consts.panelHeight}px;
-    padding: 20px;
+    padding: ${consts.margin}px;
     box-sizing: border-box;
     border-radius: ${consts.borderRadius}px;
     transition: ${consts.transition}ms;

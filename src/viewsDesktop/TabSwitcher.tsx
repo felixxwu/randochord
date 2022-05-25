@@ -35,7 +35,7 @@ export function TabSwitcher() {
             synth: order.synth - order[store.state.currentTab],
             algorithm: order.algorithm - order[store.state.currentTab],
         }
-        return { left: `${compute.bodyWidth * offset[type]}px` }
+        return { left: `${compute.bodyWidth * offset[type]}px`, opacity: store.state.currentTab === type ? 1 : 0 }
     }
 }
 
@@ -52,8 +52,8 @@ const Tabs = styled.div`
 
 const TabContent = styled.div`
     width: 100%;
-    top: ${compute.tabSwitcherHeight}px;
-    height: ${compute.trayContentHeight}px;
+    top: ${consts.tabSwitcherHeight}px;
+    height: ${consts.trayContentHeight}px;
     position: absolute;
     transition: ${consts.transition}ms cubic-bezier(0.7, 0, 0.3, 1);
 `
