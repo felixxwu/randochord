@@ -23,7 +23,13 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
                 outline={props.index === store.state.chordInClipboard}
                 menu={menu()}
             />
-            <Button icon={shuffle} small={true} onClick={handleRetry} highlighted={isCurrentlyPlaying()} />
+            <Button
+                icon={shuffle}
+                small={true}
+                onClick={handleRetry}
+                highlighted={isCurrentlyPlaying()}
+                title='Randomise chord'
+            />
         </ChordDiv>
     )
 

@@ -15,6 +15,7 @@ export function Button(props: {
     highlighted?: boolean
     outline?: boolean
     menu?: { text: string; callback: () => void }[]
+    title?: string
 }) {
     const [menuOpen, setMenuOpen] = useState(false)
     const [textScale, setTextScale] = useState(1)
@@ -36,6 +37,7 @@ export function Button(props: {
                 onPointerLeave={props.onPointerUp}
                 onPointerOut={props.onPointerUp}
                 onContextMenu={handleContextMenu}
+                title={props.title}
             >
                 {content()}
             </ButtonDiv>

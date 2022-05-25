@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { useEffect, useState } from 'react'
 import consts from '../utils/consts'
-import { compute } from '../utils/store'
+import { compute, store } from '../utils/store'
 import { FrontPanel } from './FrontPanel'
 import { TrayContent } from './TrayContent'
 
@@ -36,6 +36,7 @@ export function Body() {
             boxShadow: `0 0 ${consts.shadowBlur}px 0 ${compute.theme.shadowColour}`,
             borderRadius: `${isSmall ? 100 : consts.borderRadius}px`,
             border: `solid ${isSmall ? compute.theme.knobLineColour : 'transparent'} ${isSmall ? 2 : 0}px`,
+            maxHeight: store.state.appHeight,
         }
     }
 
@@ -48,6 +49,7 @@ export function Body() {
 }
 
 const Tray = styled.div`
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     transition: ${consts.transition}ms;
 `

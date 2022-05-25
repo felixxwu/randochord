@@ -9,7 +9,7 @@ export default {
     shadowBlur: 50,
     borderRadius: 10,
     midiNoteBorderRadius: 3,
-    trayPositions: [40, 400],
+    trayPositions: [40, 350],
     iconLarge: 30,
     iconSmall: 15,
     margin: 16,

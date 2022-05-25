@@ -15,22 +15,22 @@ import metronomeOff from '../images/metronomeOff.svg'
 export function ToolbarButtons() {
     return (
         <>
-            <Button onClick={store.undo} data-disabled={!store.canUndo()}>
+            <Button onClick={store.undo} data-disabled={!store.canUndo()} title='Undo'>
                 <Icon src={undoIcon} alt='undo' size='small' />
             </Button>
-            <Button onClick={store.redo} data-disabled={!store.canRedo()}>
+            <Button onClick={store.redo} data-disabled={!store.canRedo()} title='Redo'>
                 <Icon src={redoIcon} alt='redo' size='small' />
             </Button>
-            <Button onClick={toggleMetronome}>
+            <Button onClick={toggleMetronome} title='Metronome on/off'>
                 <Icon src={store.state.metronome ? metronomeOn : metronomeOff} alt='theme' size='small' />
             </Button>
-            <Button onClick={changeTheme}>
+            <Button onClick={changeTheme} title='Light/dark mode'>
                 <Icon src={theme} alt='theme' size='small' />
             </Button>
-            <Button onClick={downloadMidi} data-disabled={store.state.chords.length === 0}>
+            <Button onClick={downloadMidi} data-disabled={store.state.chords.length === 0} title='Export to MIDI'>
                 <Icon src={download} alt='download' size='small' />
             </Button>
-            <Button onClick={clearChords} data-disabled={store.state.chords.length === 0}>
+            <Button onClick={clearChords} data-disabled={store.state.chords.length === 0} title='Clear sequence'>
                 <Icon src={clear} alt='clear' size='small' />
             </Button>
         </>

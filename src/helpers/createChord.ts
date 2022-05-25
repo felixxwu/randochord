@@ -16,3 +16,12 @@ export function createChord(): ChordType {
         return createChord()
     }
 }
+
+// TODO algorithm ideas:
+// diatonic + extension options
+// random with scale filter
+// chord planing + chord type options
+
+// TODO voicing:
+// spread
+// cramp
