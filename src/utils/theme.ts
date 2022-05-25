@@ -6,7 +6,7 @@ const themes = {
     trayColour:            { light: 'hsl(0,0%,95%)',       dark: 'hsl(0,0%,25%)' },
     textColour:            { light: 'hsl(0,0%,40%)',       dark: 'hsl(0,0%,75%)' },
     toolbarColour:         { light: 'hsl(0,0%,95%)',       dark: 'hsl(0,0%,25%)' },
-    buttonColour:          { light: '#d9f7ff',             dark: '#adc5cc' },
+    buttonColour:          { light: '#d9f7ff',             dark: '#b8d1d9' },
     shadowColour:          { light: 'rgba(0, 0, 0, 0.1)',  dark: 'rgba(0, 0, 0, 0.4)' },
     knobColour:            { light: 'hsl(0,0%,95%)',       dark: 'hsl(0,0%,25%)' },
     knobLineColour:        { light: 'hsl(0,0%,40%)',       dark: 'hsl(0,0%,75%)' },

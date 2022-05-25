@@ -4,6 +4,8 @@ import undoIcon from '../images/undo.svg'
 import redoIcon from '../images/redo.svg'
 import clear from '../images/clear.svg'
 import theme from '../images/theme.svg'
+import metronomeOn from '../images/metronomeOn.svg'
+import metronomeOff from '../images/metronomeOff.svg'
 import download from '../images/download.svg'
 import { Icon } from '../components/Icon'
 import { compute, store } from '../utils/store'
@@ -19,6 +21,9 @@ export function Toolbar() {
             </Button>
             <Button onClick={store.redo} data-disabled={!store.canRedo()}>
                 <Icon src={redoIcon} alt='redo' size='small' />
+            </Button>
+            <Button onClick={toggleMetronome}>
+                <Icon src={store.state.metronome ? metronomeOn : metronomeOff} alt='theme' size='small' />
             </Button>
             <Button onClick={changeTheme}>
                 <Icon src={theme} alt='theme' size='small' />
@@ -40,6 +45,10 @@ export function Toolbar() {
 
     function changeTheme() {
         store.state.darkMode = !store.state.darkMode
+    }
+
+    function toggleMetronome() {
+        store.state.metronome = !store.state.metronome
     }
 
     function clearChords() {

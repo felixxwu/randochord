@@ -38,6 +38,7 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
     }
 
     function handleStop() {
+        if (store.state.currentlyPlayingChord !== null) return
         chordRelease(props.chord)
     }
 
@@ -49,7 +50,13 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
     }
 
     function getChordText() {
-        const options = Chord.detect(props.chord.map(note => getNoteName(note)))
+        if (props.chord.length === 0) return '-'
+        const options = Chord.detect(
+            props.chord
+                .slice()
+                .sort()
+                .map(note => getNoteName(note))
+        )
         return options[0] ?? '?'
     }
 

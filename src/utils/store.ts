@@ -7,7 +7,7 @@ export const store = createStore(
     {
         trayOpen: false,
         masterVolume: consts.maxMasterVolume,
-        bpm: 120,
+        bpm: consts.defaultBpm,
         chords: <ChordType[]>[],
         currentlyPlayingChord: <number | null>null,
         chordInClipboard: <number | null>null,
@@ -15,9 +15,10 @@ export const store = createStore(
         appWidth: window.innerWidth,
         appHeight: window.innerHeight,
         currentTab: <TabType>'midi',
+        metronome: true,
     },
     {
-        localStorage: { keys: ['bpm', 'masterVolume', 'trayOpen', 'darkMode', 'currentTab'] },
+        localStorage: { keys: ['bpm', 'masterVolume', 'trayOpen', 'darkMode', 'currentTab', 'metronome'] },
         undoRedo: { keys: ['chords'], useLocalStorage: true, maxLength: 1000 },
     }
 )

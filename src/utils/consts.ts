@@ -45,9 +45,12 @@ export default {
     maxMasterVolume: 100,
     minBpm: 50,
     maxBpm: 250,
-    chordDuration: 0.9, // % of bar length
+    chordDuration: 0.95, // % of bar length
     minBodyWidth: 4,
     maxBodyWidth: 8,
     numNotes: 24,
     lowestNote: 36,
+    defaultBpm: 120,
+    metronomeVolume: 0.5, // % of master volume
+    metronomeUpbeatVolume: 0.5, // & of metronome volume
 }

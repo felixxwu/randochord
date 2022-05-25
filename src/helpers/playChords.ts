@@ -3,7 +3,8 @@ import { ChordType } from '../utils/types'
 import { getNoteName } from './getNoteName'
 import consts from '../utils/consts'
 import { clock, onClockTick } from './clock'
-import { releaseAll, synth } from './synth'
+import { metronome, releaseAll, synth } from './synth'
+import * as Tone from 'tone'
 
 onClockTick(time => {
     const chordIndex = store.state.currentlyPlayingChord
@@ -16,8 +17,9 @@ onClockTick(time => {
     playChord(store.state.chords[newIndex], time)
 })
 
-export function playChords() {
+export async function playChords() {
     if (store.state.chords.length <= 0) return
+    await Tone.start()
     store.state.currentlyPlayingChord = -1
     clock.start()
 }
@@ -30,7 +32,18 @@ export function stopChords() {
 
 export function playChord(chord: ChordType, time: number, duration?: number) {
     chordAttack(chord, time)
-    chordRelease(chord, time + (duration ?? (60 / store.state.bpm) * 4 * consts.chordDuration))
+    const chordEnd = time + (duration ?? (60 / store.state.bpm) * 4 * consts.chordDuration)
+    const beat = 60 / store.state.bpm
+    const downbeatVol = consts.metronomeVolume * (store.state.masterVolume / consts.maxMasterVolume)
+    const upbeatVol = downbeatVol * consts.metronomeUpbeatVolume
+    if (duration === undefined && store.state.metronome) {
+        // playing from sequencer
+        metronome.triggerAttack(['D5'], time, downbeatVol)
+        metronome.triggerAttack(['A#4'], time + beat, upbeatVol)
+        metronome.triggerAttack(['A#4'], time + beat * 2, upbeatVol)
+        metronome.triggerAttack(['A#4'], time + beat * 3, upbeatVol)
+    }
+    chordRelease(chord, chordEnd)
 }
 
 export function chordAttack(chord: ChordType, time?: number) {

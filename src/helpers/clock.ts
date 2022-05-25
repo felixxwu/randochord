@@ -1,5 +1,6 @@
 import * as Tone from 'tone'
 import { store } from '../utils/store'
+import consts from '../utils/consts'
 
 const tickListeners: ((time: number) => void)[] = []
 
@@ -10,7 +11,7 @@ export const clock = new Tone.Clock({
         }
     },
     units: 'bpm',
-    frequency: 120,
+    frequency: consts.defaultBpm,
 })
 
 export function updateClockBpm() {
