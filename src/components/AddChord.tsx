@@ -5,8 +5,7 @@ import consts from '../utils/consts'
 import add from '../images/add.svg'
 import { createChord } from '../helpers/createChord'
 import { store } from '../utils/store'
-import { playChord } from '../helpers/playChords'
-import * as Tone from 'tone'
+import { previewChord } from '../helpers/playChords'
 
 export function AddChord() {
     if (store.state.chords.length >= consts.maxBodyWidth) return <></>
@@ -20,7 +19,7 @@ export function AddChord() {
     function handleClick() {
         const chord = createChord()
         store.state.chords.push(chord)
-        playChord(chord, Tone.now(), consts.chordPreviewDuration)
+        previewChord(chord)
         store.saveHistory()
     }
 }

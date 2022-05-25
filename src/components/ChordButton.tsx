@@ -3,12 +3,11 @@ import React from 'react'
 import styled from 'styled-components'
 import consts from '../utils/consts'
 import { ChordType } from '../utils/types'
-import { chordAttack, chordRelease, playChord } from '../helpers/playChords'
+import { chordAttack, chordRelease, previewChord } from '../helpers/playChords'
 import { store } from '../utils/store'
 import { createChord } from '../helpers/createChord'
 import { Chord } from '@tonaljs/tonal'
 import { getNoteName } from '../helpers/getNoteName'
-import * as Tone from 'tone'
 import shuffle from '../images/shuffle.svg'
 import { copy, paste } from '../utils/copyChord'
 
@@ -34,6 +33,7 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
     }
 
     function handlePlay() {
+        if (store.state.currentlyPlayingChord !== null) return
         chordAttack(props.chord)
     }
 
@@ -45,8 +45,8 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
     function handleRetry() {
         const chord = createChord()
         store.state.chords[props.index] = chord
-        playChord(chord, Tone.now(), consts.chordPreviewDuration)
         store.saveHistory()
+        previewChord(chord)
     }
 
     function getChordText() {

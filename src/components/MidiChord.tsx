@@ -3,8 +3,7 @@ import { ChordType } from '../utils/types'
 import consts from '../utils/consts'
 import React, { useRef } from 'react'
 import { compute, store } from '../utils/store'
-import { playChord } from '../helpers/playChords'
-import * as Tone from 'tone'
+import { previewChord } from '../helpers/playChords'
 
 export function MidiChord(props: { chord: ChordType; index: number }) {
     const chordRef = useRef<HTMLDivElement>(null)
@@ -28,7 +27,7 @@ export function MidiChord(props: { chord: ChordType; index: number }) {
         } else {
             store.state.chords[props.index].push(note)
         }
-        playChord(store.state.chords[props.index], Tone.now(), consts.chordPreviewDuration)
+        previewChord(store.state.chords[props.index])
         store.saveHistory()
     }
 

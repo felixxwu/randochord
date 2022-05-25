@@ -46,6 +46,12 @@ export function playChord(chord: ChordType, time: number, duration?: number) {
     chordRelease(chord, chordEnd)
 }
 
+export function previewChord(chord: ChordType) {
+    if (store.state.currentlyPlayingChord === null) {
+        playChord(chord, Tone.now(), consts.chordPreviewDuration)
+    }
+}
+
 export function chordAttack(chord: ChordType, time?: number) {
     releaseAll()
     synth.triggerAttack(
