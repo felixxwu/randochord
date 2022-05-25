@@ -52,4 +52,11 @@ const Tray = styled.div`
     overflow-x: hidden;
     overflow-y: auto;
     transition: ${consts.transition}ms;
+
+    //hide scrollbars
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `

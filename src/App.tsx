@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import { compute, onStoreUpdate, store } from './utils/store'
 import consts from './utils/consts'
 import { MobileBody } from './viewsMobile/MobileBody'
+import { handleKeydown, handleKeyup } from './helpers/keypress'
 
 export default function App() {
     store.subscribeToAll()
@@ -14,6 +15,8 @@ export default function App() {
             store.state.appWidth = window.innerWidth
             store.state.appHeight = window.innerHeight
         })
+        window.addEventListener('keydown', handleKeydown)
+        window.addEventListener('keyup', handleKeyup)
     }, [])
 
     return <AppDiv style={style()}>{store.state.appWidth > consts.maxPanelWidth ? <Body /> : <MobileBody />}</AppDiv>

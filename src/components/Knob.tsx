@@ -15,6 +15,7 @@ export function Knob(props: {
     scrollStep: number
     value: number
     onTurn: (value: number) => void
+    title?: string
 }) {
     const knobRef = useRef<SVGSVGElement>(null)
     const [value, setValue] = useState(props.value)
@@ -40,7 +41,7 @@ export function Knob(props: {
     }, [props.value])
 
     return (
-        <KnobDiv>
+        <KnobDiv title={props.title}>
             <svg style={svgStyle()} onWheel={handleWheel} ref={knobRef} viewBox='0 0 100 100' width='80px'>
                 <KnobCircle
                     cx='50'

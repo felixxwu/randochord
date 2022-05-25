@@ -12,7 +12,7 @@ export function AddChord() {
 
     return (
         <ChordDiv>
-            <Button onClick={handleClick} icon={add} small={false} />
+            <Button onClick={handleClick} icon={add} small={false} title='Add new chord' />
         </ChordDiv>
     )
 

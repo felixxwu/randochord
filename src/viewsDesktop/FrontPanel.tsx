@@ -21,6 +21,7 @@ export function FrontPanel() {
                         scrollStep={1}
                         value={store.state.bpm - consts.minBpm}
                         onTurn={value => (store.state.bpm = value + consts.minBpm)}
+                        title='Beats per minute'
                     />
                 </BPMKnob>
                 <VolKnob>
@@ -30,6 +31,7 @@ export function FrontPanel() {
                         scrollStep={5}
                         value={store.state.masterVolume}
                         onTurn={value => (store.state.masterVolume = value)}
+                        title='Master volume'
                     />
                 </VolKnob>
             </ControlRow>

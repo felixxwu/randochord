@@ -52,8 +52,8 @@ export function previewChord(chord: ChordType) {
     }
 }
 
-export function chordAttack(chord: ChordType, time?: number) {
-    releaseAll()
+export function chordAttack(chord: ChordType, time?: number, release: boolean = true) {
+    if (release) releaseAll()
     synth.triggerAttack(
         chord.map(note => getNoteName(note)),
         time,
