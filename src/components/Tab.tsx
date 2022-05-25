@@ -39,7 +39,7 @@ const TabDiv = styled.div`
     height: ${consts.tabHeight}px;
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     cursor: pointer;
     background-color: var(--frontPanelColour);
     transition: ${consts.shortTransition}ms;

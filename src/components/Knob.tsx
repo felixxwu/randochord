@@ -104,6 +104,7 @@ const KnobDiv = styled.div`
     cursor: s-resize;
     max-height: ${consts.buttonHeight}px;
     touch-action: none;
+    font-size: 14px;
 `
 
 const KnobCircle = styled.circle`

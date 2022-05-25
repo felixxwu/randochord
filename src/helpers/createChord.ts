@@ -21,6 +21,7 @@ export function createChord(): ChordType {
 // diatonic + extension options
 // random with scale filter
 // chord planing + chord type options
+// ngram
 
 // TODO voicing:
 // spread

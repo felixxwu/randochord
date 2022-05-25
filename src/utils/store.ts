@@ -1,6 +1,16 @@
 import { createStore } from 'truly-global-state'
 import consts from './consts'
-import { ChordType, TabType } from './types'
+import {
+    Algorithm,
+    ArpeggioSpeed,
+    ArpeggioType,
+    ChordRhythm,
+    ChordType,
+    ModeName,
+    NoteName,
+    Playback,
+    TabType,
+} from './types'
 import { updateClockBpm } from '../helpers/clock'
 
 export const store = createStore(
@@ -16,9 +26,32 @@ export const store = createStore(
         appHeight: window.innerHeight,
         currentTab: <TabType>'midi',
         metronome: true,
+        algorithm: <Algorithm>'diatonic',
+        diatonicKey: <NoteName>'D',
+        diatonicMode: <ModeName>'min',
+        playback: <Playback>'chords',
+        chordRhythm: <ChordRhythm>'full',
+        arpeggioType: <ArpeggioType>'rise',
+        arpeggioSpeed: <ArpeggioSpeed>'eighth',
     },
     {
-        localStorage: { keys: ['bpm', 'masterVolume', 'trayOpen', 'darkMode', 'currentTab', 'metronome'] },
+        localStorage: {
+            keys: [
+                'bpm',
+                'masterVolume',
+                'trayOpen',
+                'darkMode',
+                'currentTab',
+                'metronome',
+                'algorithm',
+                'diatonicKey',
+                'diatonicMode',
+                'playback',
+                'chordRhythm',
+                'arpeggioType',
+                'arpeggioSpeed',
+            ],
+        },
         undoRedo: { keys: ['chords'], useLocalStorage: true, maxLength: 1000 },
     }
 )
