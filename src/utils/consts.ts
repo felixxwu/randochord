@@ -39,7 +39,7 @@ export default {
     // times
     transition: 500,
     shortTransition: 200,
-    chordPreviewDuration: 0.3,
+    chordPreviewDuration: 0.2,
 
     // numbers
     maxMasterVolume: 100,
