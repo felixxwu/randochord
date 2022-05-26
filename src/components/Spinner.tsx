@@ -1,39 +1,62 @@
 import React from 'react'
 import styled from 'styled-components'
 import consts from '../utils/consts'
-import { compute } from '../utils/store'
 
-export function Spinner(props: { transparent: boolean }) {
+const darkMode = localStorage.getItem('darkMode') === 'true'
+const isMobile = window.innerWidth < consts.maxPanelWidth
+const lightThemeBgColour = isMobile ? consts.lightTheme.frontPanelColour : consts.lightTheme.bgColour
+const bgColour = darkMode ? consts.darkTheme.bgColour : lightThemeBgColour
+const trayColour = darkMode ? consts.darkTheme.trayColour : consts.lightTheme.trayColour
+const shadowColour = darkMode ? consts.darkTheme.shadowColour : consts.lightTheme.shadowColour
+const textColour = darkMode ? consts.darkTheme.textColour : consts.lightTheme.textColour
+const boxShadow = `0 0 ${consts.shadowBlur}px 0 ${shadowColour}`
+
+export function Spinner() {
     return (
-        <Wrapper style={style()}>
-            {props.transparent && 'Loading...'}
-            <SpinnerDiv className='lds-ellipsis'>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </SpinnerDiv>
-        </Wrapper>
+        <FullScreen>
+            <Wrapper>
+                <SpinnerDiv className='lds-ellipsis'>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </SpinnerDiv>
+            </Wrapper>
+            <LoadingText>Loading</LoadingText>
+        </FullScreen>
     )
-
-    function style(): React.CSSProperties {
-        if (props.transparent) return {}
-        return {
-            boxShadow: `0 0 ${consts.shadowBlur}px 0 ${compute.theme.shadowColour}`,
-            backgroundColor: compute.theme.trayColour,
-        }
-    }
 }
 
-const Wrapper = styled.div`
+const FullScreen = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${consts.margin}px;
     align-items: center;
     justify-content: center;
+    background-color: ${bgColour};
+    width: ${window.innerWidth}px;
+    height: ${window.innerHeight}px;
+`
+
+const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: ${consts.spinnerWidth}px;
     height: ${consts.spinnerWidth}px;
     border-radius: ${consts.spinnerWidth}px;
+    background-color: ${isMobile ? '' : trayColour};
+    box-shadow: ${isMobile ? '' : boxShadow};
+`
+
+const LoadingText = styled.div`
+    margin-top: 150px;
+    margin-left: 10px;
+    position: absolute;
+    color: ${textColour};
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    font-size: 14px;
 `
 
 const SpinnerDiv = styled.div`
@@ -42,9 +65,10 @@ const SpinnerDiv = styled.div`
     width: 70px;
     height: 10px;
     transform: scale(0.5);
+    left: -3px;
 
     > div {
-        background: var(--textColour);
+        background: ${textColour};
         position: absolute;
         width: 13px;
         height: 13px;
