@@ -17,6 +17,7 @@ export function Tab(props: { type: TabType }) {
 
     function getText() {
         if (props.type === 'midi') return 'MIDI'
+        if (props.type === 'chords') return 'Chords'
         if (props.type === 'synth') return 'Synth'
         if (props.type === 'algorithm') return 'Algorithm'
     }

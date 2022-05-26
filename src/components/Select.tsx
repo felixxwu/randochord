@@ -29,7 +29,6 @@ export function Select<K extends keyof typeof store.state, V extends string & ty
 
     function style(): React.CSSProperties {
         return {
-            backgroundColor: compute.theme.frontPanelColour,
             color: compute.theme.textColour,
         }
     }
@@ -42,6 +41,7 @@ const SelectMenu = styled.select`
     border-radius: ${consts.midiNoteBorderRadius}px;
     cursor: pointer;
     font-size: 14px;
+    background-color: var(--frontPanelColour);
 `
 
 const Title = styled.div`

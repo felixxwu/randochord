@@ -29,11 +29,12 @@ export function TabSwitcher() {
     )
 
     function tabContentStyle(type: TabType): React.CSSProperties {
-        const order: { [key in TabType]: number } = { midi: 0, synth: 1, algorithm: 2 }
+        const order: { [key in TabType]: number } = { midi: 0, synth: 1, algorithm: 2, chords: 0 }
         const offset: { [key in TabType]: number } = {
             midi: order.midi - order[store.state.currentTab],
             synth: order.synth - order[store.state.currentTab],
             algorithm: order.algorithm - order[store.state.currentTab],
+            chords: 0,
         }
         return { left: `${compute.bodyWidth * offset[type]}px`, opacity: store.state.currentTab === type ? 1 : 0 }
     }
@@ -55,5 +56,5 @@ const TabContent = styled.div`
     top: ${consts.tabSwitcherHeight}px;
     height: ${consts.trayContentHeight}px;
     position: absolute;
-    transition: ${consts.transition}ms cubic-bezier(0.7, 0, 0.3, 1);
+    transition: ${consts.transition}ms cubic-bezier(0.5, 0, 0.5, 1);
 `

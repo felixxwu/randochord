@@ -22,6 +22,7 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
                 highlighted={isCurrentlyPlaying()}
                 outline={props.index === store.state.chordInClipboard}
                 menu={menu()}
+                title='Right click for options'
             />
             <Button
                 icon={shuffle}

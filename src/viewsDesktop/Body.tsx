@@ -14,6 +14,8 @@ export function Body() {
             setIsSmall(false)
             setTimeout(() => {
                 setIsBlank(false)
+                // chords tab not valid on desktop
+                if (store.state.currentTab === 'chords') store.state.currentTab = 'midi'
             }, consts.transition)
         })
     }, [])

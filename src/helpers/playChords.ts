@@ -10,7 +10,7 @@ onClockTick(time => {
     const chordIndex = store.state.currentlyPlayingChord
     if (chordIndex === null) return
 
-    const atEnd = chordIndex === store.state.chords.length - 1
+    const atEnd = chordIndex >= store.state.chords.length - 1
     const newIndex = atEnd ? 0 : chordIndex + 1
     store.state.currentlyPlayingChord = newIndex
 
