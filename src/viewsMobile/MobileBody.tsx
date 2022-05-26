@@ -89,6 +89,7 @@ const MobileBodyDiv = styled.div`
     align-items: center;
     overflow-y: auto;
     overflow-x: hidden;
+    transition: ${consts.transition}ms;
 `
 
 const BPMKnob = styled.div`
