@@ -66,7 +66,6 @@ export default function MobileBody() {
         return {
             height: store.state.appHeight,
             opacity: isBlank ? 0 : 1,
-            transform: `translateY(${isBlank ? 200 : 0}px)`,
         }
     }
 
@@ -90,7 +89,6 @@ const MobileBodyDiv = styled.div`
     align-items: center;
     overflow-y: auto;
     overflow-x: hidden;
-    transition: ${2 * consts.transition}ms cubic-bezier(0.22, 0.61, 0.36, 1);
 `
 
 const BPMKnob = styled.div`
