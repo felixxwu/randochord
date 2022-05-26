@@ -9,6 +9,7 @@ import {
     ModeName,
     NoteName,
     Playback,
+    RandomNoteCount,
     TabType,
 } from './types'
 import { updateClockBpm } from '../helpers/clock'
@@ -27,6 +28,7 @@ export const store = createStore(
         currentTab: <TabType>'midi',
         metronome: true,
         algorithm: <Algorithm>'diatonic',
+        randomNoteCount: <RandomNoteCount>'4',
         diatonicKey: <NoteName>'D',
         diatonicMode: <ModeName>'min',
         playback: <Playback>'chords',
@@ -44,6 +46,7 @@ export const store = createStore(
                 'currentTab',
                 'metronome',
                 'algorithm',
+                'randomNoteCount',
                 'diatonicKey',
                 'diatonicMode',
                 'playback',

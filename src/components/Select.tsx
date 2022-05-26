@@ -42,6 +42,7 @@ const SelectMenu = styled.select`
     cursor: pointer;
     font-size: 14px;
     background-color: var(--frontPanelColour);
+    min-width: 100%;
 `
 
 const Title = styled.div`

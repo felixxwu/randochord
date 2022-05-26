@@ -36,7 +36,7 @@ const TabDiv = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: ${consts.borderRadius}px;
-    width: 130px;
+    width: 139px;
     height: ${consts.tabHeight}px;
     font-size: 12px;
     text-transform: uppercase;

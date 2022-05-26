@@ -4,8 +4,12 @@ import { getNoteName } from './getNoteName'
 import consts from '../utils/consts'
 
 export function createChord(): ChordType {
+    return randomNotes(4)
+}
+
+function randomNotes(noteCount: number) {
     const chord: ChordType = []
-    while (chord.length < 4) {
+    while (chord.length < noteCount) {
         const note = Math.floor(Math.random() * consts.numNotes) + consts.lowestNote
         if (!chord.includes(note)) chord.push(note)
     }
