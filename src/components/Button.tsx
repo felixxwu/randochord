@@ -45,12 +45,14 @@ export function Button(props: {
     )
 
     function content() {
+        const imgSize = props.small ? consts.iconSmall : consts.iconLarge
         return props.icon ? (
             <img
                 src={props.icon}
                 alt='icon'
                 draggable={false}
-                width={props.small ? consts.iconSmall : consts.iconLarge}
+                width={imgSize}
+                height={imgSize}
                 style={{ filter: `invert(1) brightness(${consts.lightTheme.textLightness / 100})` }}
             />
         ) : (
