@@ -7,7 +7,7 @@ import { chordAttack, chordRelease, previewChord } from '../helpers/playChords'
 import { store } from '../utils/store'
 import { createChord } from '../helpers/createChord'
 import { Chord } from '@tonaljs/tonal'
-import { getNoteName } from '../helpers/getNoteName'
+import { getNoteName, isSameChord } from '../helpers/getNoteName'
 import shuffle from '../images/shuffle.svg'
 import { copy, paste } from '../utils/copyChord'
 
@@ -50,7 +50,10 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
     }
 
     function handleRetry() {
-        const chord = createChord()
+        let chord
+        do {
+            chord = createChord()
+        } while (isSameChord(chord, store.state.chords[props.index]))
         store.state.chords[props.index] = chord
         store.saveHistory()
         previewChord(chord)

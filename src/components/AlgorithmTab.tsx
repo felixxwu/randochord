@@ -6,6 +6,7 @@ import {
     SelectArpSpeed,
     SelectArpType,
     SelectChordRhythm,
+    SelectExtensions,
     SelectKey,
     SelectMode,
     SelectPlayback,
@@ -17,7 +18,11 @@ export function AlgorithmTab() {
         <AlgorithmTabDiv>
             <Row>
                 <SelectAlgorithm />
-                {store.state.algorithm === 'diatonic' && [<SelectKey key={1} />, <SelectMode key={2} />]}
+                {store.state.algorithm === 'diatonic' && [
+                    <SelectKey key={1} />,
+                    <SelectMode key={2} />,
+                    <SelectExtensions key={3} />,
+                ]}
                 {store.state.algorithm === 'random' && <SelectRandomNoteCount />}
             </Row>
             <Row>

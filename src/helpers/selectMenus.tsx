@@ -32,8 +32,13 @@ export function SelectMode() {
             title={'Mode'}
             storeKey={'diatonicMode'}
             options={[
-                { title: 'Minor', value: 'min' },
-                { title: 'Major', value: 'maj' },
+                { title: 'Major', value: '1' },
+                { title: 'Minor', value: '6' },
+                { title: 'Dorian (II)', value: '2' },
+                { title: 'Phrygian (III)', value: '3' },
+                { title: 'Lydian (IV)', value: '4' },
+                { title: 'Mixolydian (V)', value: '5' },
+                { title: 'Locrian (VII)', value: '6' },
             ]}
         />
     )
@@ -107,6 +112,21 @@ export function SelectArpSpeed() {
                 { title: 'Eighth', value: 'eighth' },
                 { title: 'Sixteenth', value: 'sixteenth' },
                 { title: 'Triplets', value: 'triplet' },
+            ]}
+        />
+    )
+}
+
+export function SelectExtensions() {
+    return (
+        <Select
+            title={'Extensions'}
+            storeKey={'extensions'}
+            options={[
+                { title: 'None', value: 'none' },
+                { title: 'Simple', value: 'simple' },
+                { title: 'Complex', value: 'complex' },
+                { title: 'Complex with Alterations', value: 'complex+alterations' },
             ]}
         />
     )
