@@ -17,13 +17,13 @@ export function AlgorithmTab() {
         <AlgorithmTabDiv>
             <Row>
                 <SelectAlgorithm />
-                {store.state.algorithm === 'diatonic' && [<SelectKey />, <SelectMode />]}
+                {store.state.algorithm === 'diatonic' && [<SelectKey key={1} />, <SelectMode key={2} />]}
                 {store.state.algorithm === 'random' && <SelectRandomNoteCount />}
             </Row>
             <Row>
                 <SelectPlayback />
                 {store.state.playback === 'chords' && <SelectChordRhythm />}
-                {store.state.playback === 'arpeggio' && [<SelectArpType />, <SelectArpSpeed />]}
+                {store.state.playback === 'arpeggio' && [<SelectArpType key={1} />, <SelectArpSpeed key={2} />]}
             </Row>
         </AlgorithmTabDiv>
     )

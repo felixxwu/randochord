@@ -12,7 +12,7 @@ import { TabType } from '../utils/types'
 import { SynthTab } from '../components/SynthTab'
 import { AlgorithmTab } from '../components/AlgorithmTab'
 
-export function MobileBody() {
+export default function MobileBody() {
     const [isBlank, setIsBlank] = useState(true)
 
     useEffect(() => {

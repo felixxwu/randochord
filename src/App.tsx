@@ -1,10 +1,12 @@
-import { Body } from './viewsDesktop/Body'
 import styled from 'styled-components'
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense } from 'react'
 import { compute, onStoreUpdate, store } from './utils/store'
 import consts from './utils/consts'
-import { MobileBody } from './viewsMobile/MobileBody'
 import { handleKeydown, handleKeyup } from './helpers/keypress'
+import { Spinner } from './components/Spinner'
+
+const Body = React.lazy(() => import('./viewsDesktop/Body'))
+const MobileBody = React.lazy(() => import('./viewsMobile/MobileBody'))
 
 export default function App() {
     store.subscribeToAll()
@@ -19,7 +21,19 @@ export default function App() {
         window.addEventListener('keyup', handleKeyup)
     }, [])
 
-    return <AppDiv style={style()}>{store.state.appWidth > consts.maxPanelWidth ? <Body /> : <MobileBody />}</AppDiv>
+    return (
+        <AppDiv style={style()}>
+            {store.state.appWidth > consts.maxPanelWidth ? (
+                <Suspense fallback={<Spinner transparent={false} />}>
+                    <Body />
+                </Suspense>
+            ) : (
+                <Suspense fallback={<Spinner transparent={true} />}>
+                    <MobileBody />
+                </Suspense>
+            )}
+        </AppDiv>
+    )
 
     function style(): React.CSSProperties {
         return {

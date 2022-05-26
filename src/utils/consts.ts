@@ -20,6 +20,7 @@ export default {
     tabBorderWidth: 1,
     tabHeight: 25,
     titleSpacing: 10,
+    spinnerWidth: 70,
     get panelHeight() {
         return this.buttonHeight * 2 + this.smallButtonHeight * 2 + this.margin * 5
     },

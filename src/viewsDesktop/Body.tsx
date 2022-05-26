@@ -5,7 +5,7 @@ import { compute, store } from '../utils/store'
 import { FrontPanel } from './FrontPanel'
 import { TrayContent } from './TrayContent'
 
-export function Body() {
+export default function Body() {
     const [isSmall, setIsSmall] = useState(true)
     const [isBlank, setIsBlank] = useState(true)
 
@@ -32,12 +32,11 @@ export function Body() {
     function trayStyle(): React.CSSProperties {
         const fullHeight = isBlank ? consts.panelHeight : consts.panelHeight + compute.trayPosition
         return {
-            width: `${isSmall ? 50 : compute.bodyWidth}px`,
-            height: `${isSmall ? 50 : fullHeight}px`,
+            width: `${isSmall ? consts.spinnerWidth : compute.bodyWidth}px`,
+            height: `${isSmall ? consts.spinnerWidth : fullHeight}px`,
             backgroundColor: compute.theme.trayColour,
             boxShadow: `0 0 ${consts.shadowBlur}px 0 ${compute.theme.shadowColour}`,
-            borderRadius: `${isSmall ? 100 : consts.borderRadius}px`,
-            border: `solid ${isSmall ? compute.theme.knobLineColour : 'transparent'} ${isSmall ? 2 : 0}px`,
+            borderRadius: `${isSmall ? consts.spinnerWidth : consts.borderRadius}px`,
             maxHeight: store.state.appHeight,
         }
     }
