@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import consts from '../utils/consts'
 import add from '../images/add.svg'
-import { createChord } from '../helpers/createChord'
+import { createChord } from '../algorithms/createChord'
 import { store } from '../utils/store'
 import { previewChord } from '../helpers/playChords'
 

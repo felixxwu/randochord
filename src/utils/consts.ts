@@ -51,7 +51,10 @@ export default {
     maxBodyWidth: 8,
     numNotes: 24,
     lowestNote: 36,
+    get highestNote() {
+        return this.lowestNote + this.numNotes
+    },
     defaultBpm: 120,
     metronomeVolume: 0.5, // % of master volume
     metronomeUpbeatVolume: 0.5, // & of metronome volume
-}
+} as const
