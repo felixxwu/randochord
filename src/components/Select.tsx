@@ -11,7 +11,12 @@ export function Select<K extends keyof typeof store.state, V extends string & ty
     return (
         <div>
             <Title>{props.title}</Title>
-            <SelectMenu value={store.state[props.storeKey] as V} onChange={handleChange} style={style()}>
+            <SelectMenu
+                value={store.state[props.storeKey] as V}
+                onChange={handleChange}
+                onWheel={handleWheel}
+                style={style()}
+            >
                 {props.options.map((option, i) => (
                     <option value={option.value} key={i}>
                         {option.title}
@@ -25,6 +30,20 @@ export function Select<K extends keyof typeof store.state, V extends string & ty
         const option = props.options.find(option => option.value === event.target.value)
         if (option === undefined) return
         store.state[props.storeKey] = option.value
+    }
+
+    function handleWheel(event: React.WheelEvent<HTMLSelectElement>) {
+        const index = props.options.findIndex(option => option.value === store.state[props.storeKey])
+        try {
+            // up
+            if (event.deltaY < 0) {
+                store.state[props.storeKey] = props.options[index - 1].value
+            }
+            // down
+            if (event.deltaY > 0) {
+                store.state[props.storeKey] = props.options[index + 1].value
+            }
+        } catch (e) {}
     }
 
     function style(): React.CSSProperties {

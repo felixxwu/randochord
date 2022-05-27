@@ -88,6 +88,7 @@ export function Knob(props: {
     }
 
     function handleWheel(event: React.WheelEvent<SVGSVGElement>) {
+        if (event.deltaY === 0) return
         addToValue(event.deltaY > 0 ? props.scrollStep : -props.scrollStep)
     }
 

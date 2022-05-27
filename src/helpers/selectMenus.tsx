@@ -38,7 +38,7 @@ export function SelectMode() {
                 { title: 'Phrygian (III)', value: '3' },
                 { title: 'Lydian (IV)', value: '4' },
                 { title: 'Mixolydian (V)', value: '5' },
-                { title: 'Locrian (VII)', value: '6' },
+                { title: 'Locrian (VII)', value: '7' },
             ]}
         />
     )
