@@ -8,8 +8,8 @@ export function SelectAlgorithm() {
             storeKey={'algorithm'}
             options={[
                 { title: 'Diatonic', value: 'diatonic' },
-                { title: 'Chord Planing', value: 'chord planing' },
-                { title: 'AI (n-gram)', value: 'ngram' },
+                // { title: 'Chord Planing', value: 'chord planing' },
+                // { title: 'AI (n-gram)', value: 'ngram' },
                 { title: 'Pure Random', value: 'random' },
             ]}
         />
@@ -125,8 +125,8 @@ export function SelectExtensions() {
             options={[
                 { title: 'None', value: 'none' },
                 { title: 'Simple', value: 'simple' },
-                { title: 'Complex', value: 'complex' },
-                { title: 'Complex with Alterations', value: 'complex+alterations' },
+                // { title: 'Complex', value: 'complex' },
+                // { title: 'Complex with Alterations', value: 'complex+alterations' },
             ]}
         />
     )

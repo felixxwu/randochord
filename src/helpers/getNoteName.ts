@@ -22,7 +22,11 @@ export function getScale(mode: ModeName) {
             scale.push(majorScale[i - 7] + 12 - majorScale[startPos])
         }
     }
-    return scale
+    const doubleScale = scale.slice()
+    for (const note of scale) {
+        doubleScale.push(note + 12)
+    }
+    return doubleScale
 }
 
 export function getNoteName(note: number): MidiNoteName {

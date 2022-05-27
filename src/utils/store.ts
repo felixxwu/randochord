@@ -51,6 +51,7 @@ export const store = createStore(
                 'randomNoteCount',
                 'diatonicKey',
                 'diatonicMode',
+                'extensions',
                 'playback',
                 'chordRhythm',
                 'arpeggioType',

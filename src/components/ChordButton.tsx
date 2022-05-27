@@ -10,6 +10,7 @@ import { Chord } from '@tonaljs/tonal'
 import { getNoteName, isSameChord } from '../helpers/getNoteName'
 import shuffle from '../images/shuffle.svg'
 import { copy, paste } from '../utils/copyChord'
+import { revoice } from '../helpers/processNotes'
 
 export function ChordButton(props: { chord: ChordType; index: number }) {
     return (
@@ -77,12 +78,19 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
             { text: 'Copy', callback: () => copy(props.index) },
             { text: 'Paste', callback: () => paste(props.index) },
             { text: 'Delete', callback: deleteChord },
+            { text: 'Revoice', callback: revoiceChord },
         ]
     }
 
     function deleteChord() {
         store.state.chords.splice(props.index, 1)
         store.saveHistory()
+    }
+
+    function revoiceChord() {
+        store.state.chords[props.index] = revoice(store.state.chords[props.index])
+        store.saveHistory()
+        previewChord(store.state.chords[props.index])
     }
 }
 

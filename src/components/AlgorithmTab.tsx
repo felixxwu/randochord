@@ -25,11 +25,11 @@ export function AlgorithmTab() {
                 ]}
                 {store.state.algorithm === 'random' && <SelectRandomNoteCount />}
             </Row>
-            <Row>
-                <SelectPlayback />
-                {store.state.playback === 'chords' && <SelectChordRhythm />}
-                {store.state.playback === 'arpeggio' && [<SelectArpType key={1} />, <SelectArpSpeed key={2} />]}
-            </Row>
+            {/*<Row>*/}
+            {/*    <SelectPlayback />*/}
+            {/*    {store.state.playback === 'chords' && <SelectChordRhythm />}*/}
+            {/*    {store.state.playback === 'arpeggio' && [<SelectArpType key={1} />, <SelectArpSpeed key={2} />]}*/}
+            {/*</Row>*/}
         </AlgorithmTabDiv>
     )
 }
