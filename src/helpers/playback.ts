@@ -2,14 +2,16 @@ import { store } from '../utils/store'
 import { ChordType } from '../utils/types'
 import { getNoteName } from './getNoteName'
 import consts from '../utils/consts'
-import { clock, onClockTick } from './clock'
+import { clock, onClockTick, resetDivision } from './clock'
 import { metronome, releaseAll, synth } from './synth'
 import * as Tone from 'tone'
 
-onClockTick(time => {
+onClockTick((time, division) => {
+    playMetronome(time, division)
+
+    if (division !== 0) return
     const chordIndex = store.state.currentlyPlayingChord
     if (chordIndex === null) return
-
     const atEnd = chordIndex >= store.state.chords.length - 1
     const newIndex = atEnd ? 0 : chordIndex + 1
     store.state.currentlyPlayingChord = newIndex
@@ -21,6 +23,7 @@ export async function playChords() {
     if (store.state.chords.length <= 0) return
     await Tone.start()
     store.state.currentlyPlayingChord = -1
+    resetDivision()
     clock.start()
 }
 
@@ -33,17 +36,18 @@ export function stopChords() {
 export function playChord(chord: ChordType, time: number, duration?: number) {
     chordAttack(chord, time)
     const chordEnd = time + (duration ?? (60 / store.state.bpm) * 4 * consts.chordDuration)
-    const beat = 60 / store.state.bpm
+    chordRelease(chord, chordEnd)
+}
+
+export function playMetronome(time: number, division: number) {
+    if (!store.state.metronome) return
     const downbeatVol = consts.metronomeVolume * (store.state.masterVolume / consts.maxMasterVolume)
     const upbeatVol = downbeatVol * consts.metronomeUpbeatVolume
-    if (duration === undefined && store.state.metronome) {
-        // playing from sequencer
+    if (division === 0) {
         metronome.triggerAttack(['D5'], time, downbeatVol)
-        metronome.triggerAttack(['A#4'], time + beat, upbeatVol)
-        metronome.triggerAttack(['A#4'], time + beat * 2, upbeatVol)
-        metronome.triggerAttack(['A#4'], time + beat * 3, upbeatVol)
+    } else if (division % consts.beatDivisions === 0) {
+        metronome.triggerAttack(['A#4'], time, upbeatVol)
     }
-    chordRelease(chord, chordEnd)
 }
 
 export function previewChord(chord: ChordType) {

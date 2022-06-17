@@ -1,6 +1,6 @@
 import consts from '../utils/consts'
 import React from 'react'
-import { chordAttack, chordRelease } from '../helpers/playChords'
+import { chordAttack, chordRelease } from '../helpers/playback'
 import styled from 'styled-components'
 import { compute } from '../utils/store'
 import { getNoteColour } from '../helpers/getNoteName'

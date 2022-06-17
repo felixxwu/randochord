@@ -40,6 +40,7 @@ export const store = createStore(
         arpeggioType: <ArpeggioType>'rise',
         arpeggioSpeed: <ArpeggioSpeed>'eighth',
         chordPlaningType: <ChordPlaningType>'min9',
+        chordLength: 4,
     },
     {
         localStorage: {

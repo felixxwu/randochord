@@ -3,7 +3,7 @@ import { ChordType } from '../utils/types'
 import consts from '../utils/consts'
 import React, { useRef } from 'react'
 import { compute, store } from '../utils/store'
-import { previewChord } from '../helpers/playChords'
+import { previewChord } from '../helpers/playback'
 
 export function MidiChord(props: { chord: ChordType; index: number }) {
     const chordRef = useRef<HTMLDivElement>(null)

@@ -1,5 +1,5 @@
-import { ChordType } from './types'
-import { store } from './store'
+import { ChordType } from '../utils/types'
+import { store } from '../utils/store'
 
 let clipboard: ChordType | null = null
 

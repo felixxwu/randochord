@@ -5,7 +5,7 @@ import consts from '../utils/consts'
 import add from '../images/add.svg'
 import { createChord } from '../algorithms/createChord'
 import { store } from '../utils/store'
-import { previewChord } from '../helpers/playChords'
+import { previewChord } from '../helpers/playback'
 
 export function AddChord() {
     if (store.state.chords.length >= consts.maxBodyWidth) return <></>

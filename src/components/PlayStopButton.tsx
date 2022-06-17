@@ -1,6 +1,6 @@
 import { store } from '../utils/store'
 import stop from '../images/stop.svg'
-import { playChords, stopChords } from '../helpers/playChords'
+import { playChords, stopChords } from '../helpers/playback'
 import { Button } from './Button'
 import React from 'react'
 import play from '../images/play.svg'

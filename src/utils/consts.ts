@@ -55,6 +55,7 @@ export default {
         return this.lowestNote + this.numNotes
     },
     defaultBpm: 120,
-    metronomeVolume: 0.5, // % of master volume
+    metronomeVolume: 1, // % of master volume
     metronomeUpbeatVolume: 0.5, // & of metronome volume
+    beatDivisions: 4, // number of clock ticks per beat
 } as const

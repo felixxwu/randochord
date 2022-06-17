@@ -1,5 +1,5 @@
 import { store } from '../utils/store'
-import { chordAttack, chordRelease } from './playChords'
+import { chordAttack, chordRelease } from './playback'
 
 let keysDown: number[] = []
 
