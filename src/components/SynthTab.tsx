@@ -1,9 +1,3 @@
 export function SynthTab() {
-    return (
-        <div>
-            synth synth synth synth synth synth synth synth synth synth synth synth synth synth synth synth synth synth
-            synth synth synth synth synth synth synth synth synth synth synth synth synth synth synth synth synth synth
-            synth synth synth synth
-        </div>
-    )
+    return <div>Synthesiser settings go here - work in progress</div>
 }

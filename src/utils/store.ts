@@ -4,6 +4,7 @@ import {
     Algorithm,
     ArpeggioSpeed,
     ArpeggioType,
+    ChordPlaningType,
     ChordRhythm,
     ChordType,
     ExtensionType,
@@ -38,6 +39,7 @@ export const store = createStore(
         chordRhythm: <ChordRhythm>'full',
         arpeggioType: <ArpeggioType>'rise',
         arpeggioSpeed: <ArpeggioSpeed>'eighth',
+        chordPlaningType: <ChordPlaningType>'min9',
     },
     {
         localStorage: {
@@ -58,6 +60,7 @@ export const store = createStore(
                 'arpeggioType',
                 'arpeggioSpeed',
                 'randomFilterKey',
+                'chordPlaningType',
             ],
         },
         undoRedo: { keys: ['chords'], useLocalStorage: true, maxLength: 1000 },

@@ -8,7 +8,7 @@ export function SelectAlgorithm() {
             storeKey={'algorithm'}
             options={[
                 { title: 'Diatonic', value: 'diatonic' },
-                // { title: 'Chord Planing', value: 'chord planing' },
+                { title: 'Chord Planing', value: 'chord planing' },
                 // { title: 'AI (n-gram)', value: 'ngram' },
                 { title: 'Random', value: 'random' },
             ]}
@@ -47,7 +47,7 @@ export function SelectMode() {
 export function SelectRandomNoteCount() {
     return (
         <Select
-            title={'Note count'}
+            title={'Note Count'}
             storeKey={'randomNoteCount'}
             options={[
                 { title: '3', value: '3' },
@@ -62,7 +62,7 @@ export function SelectRandomNoteCount() {
 export function SelectRandomNoteFilterKey() {
     return (
         <Select
-            title={'Filter notes'}
+            title={'Filter Notes'}
             storeKey={'randomFilterKey'}
             options={[
                 { title: 'No filter', value: '' },
@@ -140,6 +140,26 @@ export function SelectExtensions() {
                 { title: 'Simple', value: 'simple' },
                 { title: 'Complex', value: 'complex' },
                 // { title: 'Complex with Alterations', value: 'complex+alterations' },
+            ]}
+        />
+    )
+}
+
+export function SelectChordPlaningType() {
+    return (
+        <Select
+            title={'Chord'}
+            storeKey={'chordPlaningType'}
+            options={[
+                { title: 'Copy First', value: 'copy' },
+                { title: 'Minor', value: 'min' },
+                { title: 'Minor 7th', value: 'min7' },
+                { title: 'Minor 9th', value: 'min9' },
+                { title: 'Minor 11th', value: 'min11' },
+                { title: 'Major', value: 'maj' },
+                { title: 'Major 7th', value: 'maj7' },
+                { title: 'Major 9th', value: 'maj9' },
+                { title: 'Major 11th', value: 'maj11' },
             ]}
         />
     )

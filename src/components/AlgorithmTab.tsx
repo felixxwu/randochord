@@ -5,6 +5,7 @@ import {
     SelectAlgorithm,
     SelectArpSpeed,
     SelectArpType,
+    SelectChordPlaningType,
     SelectChordRhythm,
     SelectExtensions,
     SelectKey,
@@ -31,6 +32,11 @@ export function AlgorithmTab() {
                         <SelectRandomNoteCount />
                         <SelectRandomNoteFilterKey />
                         {store.state.randomFilterKey !== '' && <SelectMode />}
+                    </>
+                )}
+                {store.state.algorithm === 'chord planing' && (
+                    <>
+                        <SelectChordPlaningType />
                     </>
                 )}
             </Row>

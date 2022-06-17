@@ -16,5 +16,6 @@ export type ArpeggioType = 'rise' | 'fall' | 'rise and fall' | 'random'
 export type ArpeggioSpeed = 'quarter' | 'eighth' | 'sixteenth' | 'triplet'
 export type RandomNoteCount = '3' | '4' | '5' | '6'
 export type ExtensionType = 'none' | 'simple' | 'complex' | 'complex+alterations'
+export type ChordPlaningType = 'maj' | 'maj7' | 'maj9' | 'maj11' | 'min' | 'min7' | 'min9' | 'min11' | 'copy'
 
 export type MenuList = ({ text: string; callback: () => void } | null)[]
