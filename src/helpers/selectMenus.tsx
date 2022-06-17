@@ -32,8 +32,8 @@ export function SelectMode() {
             title={'Mode'}
             storeKey={'diatonicMode'}
             options={[
-                { title: 'Major', value: '1' },
-                { title: 'Minor', value: '6' },
+                { title: 'Major (I)', value: '1' },
+                { title: 'Minor (VI)', value: '6' },
                 { title: 'Dorian (II)', value: '2' },
                 { title: 'Phrygian (III)', value: '3' },
                 { title: 'Lydian (IV)', value: '4' },
@@ -54,6 +54,19 @@ export function SelectRandomNoteCount() {
                 { title: '4', value: '4' },
                 { title: '5', value: '5' },
                 { title: '6', value: '6' },
+            ]}
+        />
+    )
+}
+
+export function SelectRandomNoteFilterKey() {
+    return (
+        <Select
+            title={'Filter notes'}
+            storeKey={'randomFilterKey'}
+            options={[
+                { title: 'No filter', value: '' },
+                ...getNoteLabelAndNames().map(x => ({ title: x.label, value: x.name })),
             ]}
         />
     )

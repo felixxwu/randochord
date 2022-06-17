@@ -11,6 +11,7 @@ import {
     SelectMode,
     SelectPlayback,
     SelectRandomNoteCount,
+    SelectRandomNoteFilterKey,
 } from '../helpers/selectMenus'
 
 export function AlgorithmTab() {
@@ -18,12 +19,20 @@ export function AlgorithmTab() {
         <AlgorithmTabDiv>
             <Row>
                 <SelectAlgorithm />
-                {store.state.algorithm === 'diatonic' && [
-                    <SelectKey key={1} />,
-                    <SelectMode key={2} />,
-                    <SelectExtensions key={3} />,
-                ]}
-                {store.state.algorithm === 'random' && <SelectRandomNoteCount />}
+                {store.state.algorithm === 'diatonic' && (
+                    <>
+                        <SelectKey />
+                        <SelectMode />
+                        <SelectExtensions />
+                    </>
+                )}
+                {store.state.algorithm === 'random' && (
+                    <>
+                        <SelectRandomNoteCount />
+                        <SelectRandomNoteFilterKey />
+                        {store.state.randomFilterKey !== '' && <SelectMode />}
+                    </>
+                )}
             </Row>
             {/*<Row>*/}
             {/*    <SelectPlayback />*/}
