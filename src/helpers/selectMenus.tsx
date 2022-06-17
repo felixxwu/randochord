@@ -164,3 +164,22 @@ export function SelectChordPlaningType() {
         />
     )
 }
+
+export function SelectChordLength() {
+    return (
+        <Select
+            title={'Chord Length'}
+            storeKey={'chordLength'}
+            options={[
+                { title: '1 Beat', value: '1' },
+                { title: '2 Beats', value: '2' },
+                { title: '3 Beats', value: '3' },
+                { title: '4 Beats', value: '4' },
+                { title: '5 Beats', value: '5' },
+                { title: '6 Beats', value: '6' },
+                { title: '7 Beats', value: '7' },
+                { title: '8 Beats', value: '8' },
+            ]}
+        />
+    )
+}

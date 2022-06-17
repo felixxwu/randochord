@@ -35,7 +35,8 @@ export function stopChords() {
 
 export function playChord(chord: ChordType, time: number, duration?: number) {
     chordAttack(chord, time)
-    const chordEnd = time + (duration ?? (60 / store.state.bpm) * 4 * consts.chordDuration)
+    const chordLength = (60 / store.state.bpm) * parseInt(store.state.chordLength)
+    const chordEnd = time + (duration ?? chordLength * consts.chordDuration)
     chordRelease(chord, chordEnd)
 }
 
