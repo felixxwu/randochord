@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import consts from '../utils/consts'
 import { compute } from '../utils/store'
 import { getThemeVar } from '../utils/theme'
+import { MenuList } from '../utils/types'
 
-export function Menu(props: { menu: { text: string; callback: () => void }[]; closeMenu: () => void }) {
+export function Menu(props: { menu: MenuList; closeMenu: () => void }) {
     const [menuHeight, setMenuHeight] = useState(0)
     const [transition, setTransition] = useState(0)
 
@@ -18,11 +19,14 @@ export function Menu(props: { menu: { text: string; callback: () => void }[]; cl
     return (
         <MenuCloser onClick={handleClose} onContextMenu={handleContextMenu}>
             <MenuDiv style={style()}>
-                {(props.menu ?? []).map((item, index) => (
-                    <MenuItem onClick={item.callback} key={index}>
-                        {item.text}
-                    </MenuItem>
-                ))}
+                {(props.menu ?? []).map(
+                    (item, index) =>
+                        item !== null && (
+                            <MenuItem onClick={item.callback} key={index}>
+                                {item.text}
+                            </MenuItem>
+                        )
+                )}
             </MenuDiv>
         </MenuCloser>
     )
@@ -65,7 +69,7 @@ const MenuDiv = styled.div`
 `
 
 const MenuItem = styled.div`
-    padding: ${consts.margin}px;
+    padding: ${consts.margin / 2}px;
     min-width: 100px;
     box-sizing: border-box;
 

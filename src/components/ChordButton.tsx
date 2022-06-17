@@ -2,7 +2,7 @@ import { Button } from './Button'
 import React from 'react'
 import styled from 'styled-components'
 import consts from '../utils/consts'
-import { ChordType } from '../utils/types'
+import { ChordType, MenuList } from '../utils/types'
 import { chordAttack, chordRelease, previewChord } from '../helpers/playChords'
 import { store } from '../utils/store'
 import { createChord } from '../algorithms/createChord'
@@ -73,12 +73,14 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
         return options[0] ?? '?'
     }
 
-    function menu() {
+    function menu(): MenuList {
         return [
             { text: 'Copy', callback: () => copy(props.index) },
             { text: 'Paste', callback: () => paste(props.index) },
             { text: 'Delete', callback: deleteChord },
             { text: 'Revoice', callback: revoiceChord },
+            isLeftMost() ? null : { text: 'Move Left', callback: moveChordLeft },
+            isRightMost() ? null : { text: 'Move Right', callback: moveChordRight },
         ]
     }
 
@@ -91,6 +93,30 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
         store.state.chords[props.index] = revoice(store.state.chords[props.index])
         store.saveHistory()
         previewChord(store.state.chords[props.index])
+    }
+
+    function isLeftMost() {
+        return props.index === 0
+    }
+
+    function isRightMost() {
+        return props.index === store.state.chords.length - 1
+    }
+
+    function moveChordLeft() {
+        if (isLeftMost()) return
+        const chord = store.state.chords[props.index]
+        store.state.chords[props.index] = store.state.chords[props.index - 1]
+        store.state.chords[props.index - 1] = chord
+        store.saveHistory()
+    }
+
+    function moveChordRight() {
+        if (isRightMost()) return
+        const chord = store.state.chords[props.index]
+        store.state.chords[props.index] = store.state.chords[props.index + 1]
+        store.state.chords[props.index + 1] = chord
+        store.saveHistory()
     }
 }
 

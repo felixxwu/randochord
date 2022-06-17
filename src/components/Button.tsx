@@ -4,6 +4,7 @@ import consts from '../utils/consts'
 import { compute } from '../utils/store'
 import { Menu } from './Menu'
 import { getThemeVar } from '../utils/theme'
+import { MenuList } from '../utils/types'
 
 export function Button(props: {
     text?: string
@@ -15,7 +16,7 @@ export function Button(props: {
     onPointerUp?: () => void
     highlighted?: boolean
     outline?: boolean
-    menu?: { text: string; callback: () => void }[]
+    menu?: MenuList
     title?: string
 }) {
     const [menuOpen, setMenuOpen] = useState(false)
