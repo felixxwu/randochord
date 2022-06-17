@@ -2,6 +2,7 @@ import React from 'react'
 import { compute, store } from '../utils/store'
 import styled from 'styled-components'
 import consts from '../utils/consts'
+import { getThemeVar } from '../utils/theme'
 
 export function Select<K extends keyof typeof store.state, V extends string & typeof store.state[K]>(props: {
     title: string
@@ -60,7 +61,7 @@ const SelectMenu = styled.select`
     border-radius: ${consts.midiNoteBorderRadius}px;
     cursor: pointer;
     font-size: 14px;
-    background-color: var(--frontPanelColour);
+    background-color: ${getThemeVar('frontPanelColour')};
     min-width: 100%;
 `
 

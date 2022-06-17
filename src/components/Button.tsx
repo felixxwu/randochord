@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import consts from '../utils/consts'
 import { compute } from '../utils/store'
 import { Menu } from './Menu'
+import { getThemeVar } from '../utils/theme'
 
 export function Button(props: {
     text?: string
@@ -100,11 +101,11 @@ const ButtonDiv = styled.div`
     cursor: pointer;
     transition: ${consts.shortTransition}ms;
     overflow: hidden;
-    background-color: var(--buttonColour);
+    background-color: ${getThemeVar('buttonColour')};
     box-sizing: border-box;
     outline-offset: -${consts.buttonBorderWidth}px;
 
     &:hover {
-        background-color: var(--buttonHighlightColour);
+        background-color: ${getThemeVar('buttonHighlightColour')};
     }
 `

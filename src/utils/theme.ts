@@ -30,3 +30,7 @@ export function getTheme<T extends 'dark' | 'light'>(type: T): Theme<T> {
     }
     return theme
 }
+
+export function getThemeVar(name: keyof typeof themes) {
+    return `var(--${name})`
+}

@@ -18,8 +18,8 @@ import { updateClockBpm } from '../helpers/clock'
 export const store = createStore(
     {
         trayOpen: false,
-        masterVolume: consts.maxMasterVolume,
-        bpm: consts.defaultBpm,
+        masterVolume: consts.maxMasterVolume as number,
+        bpm: consts.defaultBpm as number,
         chords: <ChordType[]>[],
         currentlyPlayingChord: <number | null>null,
         chordInClipboard: <number | null>null,

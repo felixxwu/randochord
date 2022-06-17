@@ -3,6 +3,7 @@ import consts from '../utils/consts'
 import { TabType } from '../utils/types'
 import React from 'react'
 import { compute, store } from '../utils/store'
+import { getThemeVar } from '../utils/theme'
 
 export function Tab(props: { type: TabType }) {
     return (
@@ -42,11 +43,11 @@ const TabDiv = styled.div`
     text-transform: uppercase;
     letter-spacing: 2px;
     cursor: pointer;
-    background-color: var(--frontPanelColour);
+    background-color: ${getThemeVar('frontPanelColour')};
     transition: ${consts.shortTransition}ms;
     outline-offset: -${consts.tabBorderWidth}px;
 
     &:hover {
-        background-color: var(--highlight);
+        background-color: ${getThemeVar('highlight')};
     }
 `

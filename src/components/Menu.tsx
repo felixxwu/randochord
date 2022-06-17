@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import consts from '../utils/consts'
 import { compute } from '../utils/store'
+import { getThemeVar } from '../utils/theme'
 
 export function Menu(props: { menu: { text: string; callback: () => void }[]; closeMenu: () => void }) {
     const [menuHeight, setMenuHeight] = useState(0)
@@ -69,6 +70,6 @@ const MenuItem = styled.div`
     box-sizing: border-box;
 
     &:hover {
-        background-color: var(--highlight);
+        background-color: ${getThemeVar('highlight')};
     }
 `

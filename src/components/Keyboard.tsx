@@ -4,6 +4,7 @@ import { chordAttack, chordRelease } from '../helpers/playChords'
 import styled from 'styled-components'
 import { compute } from '../utils/store'
 import { getNoteColour } from '../helpers/getNoteName'
+import { getThemeVar } from '../utils/theme'
 
 export function Keyboard() {
     return (
@@ -42,7 +43,7 @@ export function Keyboard() {
 const outlineWidth = 2
 
 const KeyBoard = styled.div`
-    outline: ${outlineWidth}px solid var(--keyboardOutline);
+    outline: ${outlineWidth}px solid ${getThemeVar('keyboardOutline')};
     outline-offset: -${outlineWidth}px;
     margin-left: -${outlineWidth}px;
     width: ${consts.margin + outlineWidth}px;

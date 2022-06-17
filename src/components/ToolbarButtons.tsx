@@ -11,6 +11,7 @@ import styled from 'styled-components'
 import consts from '../utils/consts'
 import metronomeOn from '../images/metronomeOn.svg'
 import metronomeOff from '../images/metronomeOff.svg'
+import { getThemeVar } from '../utils/theme'
 
 export function ToolbarButtons() {
     return (
@@ -60,7 +61,7 @@ const Button = styled.div`
     transition: ${consts.shortTransition}ms;
 
     &:hover {
-        background-color: var(--highlight);
+        background-color: ${getThemeVar('highlight')};
     }
 
     img {

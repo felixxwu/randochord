@@ -11,6 +11,7 @@ import { Tab } from '../components/Tab'
 import { TabType } from '../utils/types'
 import { SynthTab } from '../components/SynthTab'
 import { AlgorithmTab } from '../components/AlgorithmTab'
+import { getThemeVar } from '../utils/theme'
 
 export default function MobileBody() {
     const [isBlank, setIsBlank] = useState(true)
@@ -122,7 +123,7 @@ const Tabs = styled.div`
     gap: ${consts.margin}px;
 
     > * {
-        background-color: var(--highlight);
+        background-color: ${getThemeVar('highlight')};
     }
 `
 
@@ -135,7 +136,7 @@ const TabContent = styled.div`
     width: 100%;
 
     > * select {
-        background-color: var(--toolbarColour);
+        background-color: ${getThemeVar('toolbarColour')};
     }
 `
 
