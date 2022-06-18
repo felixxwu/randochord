@@ -46,7 +46,7 @@ export default {
     maxMasterVolume: 100,
     minBpm: 50,
     maxBpm: 250,
-    chordDuration: 0.9, // % of bar length
+    timeBetweenChords: 0.1,
     minBodyWidth: 4,
     maxBodyWidth: 8,
     numNotes: 24,

@@ -5,18 +5,20 @@ import consts from '../utils/consts'
 import { clock, onClockTick, resetDivision } from './clock'
 import { metronome, releaseAll, synth } from './synth'
 import * as Tone from 'tone'
+import { playSelectedPattern } from '../algorithms/playbackPattern'
 
 onClockTick((time, division) => {
+    const divisionsForOneChord = parseInt(store.state.chordLength) * consts.beatDivisions
+    if (division % divisionsForOneChord === 0) {
+        const chordIndex = store.state.currentlyPlayingChord
+        if (chordIndex === null) return
+        const atEnd = chordIndex >= store.state.chords.length - 1
+        store.state.currentlyPlayingChord = atEnd ? 0 : chordIndex + 1
+    }
+
+    // pattern requires the currentlyPlayingChord to be set before being called
     playMetronome(time, division)
-
-    if (division !== 0) return
-    const chordIndex = store.state.currentlyPlayingChord
-    if (chordIndex === null) return
-    const atEnd = chordIndex >= store.state.chords.length - 1
-    const newIndex = atEnd ? 0 : chordIndex + 1
-    store.state.currentlyPlayingChord = newIndex
-
-    playChord(store.state.chords[newIndex], time)
+    playSelectedPattern(time, division)
 })
 
 export async function playChords() {
@@ -33,11 +35,9 @@ export function stopChords() {
     store.state.currentlyPlayingChord = null
 }
 
-export function playChord(chord: ChordType, time: number, duration?: number) {
+export function playChord(chord: ChordType, time: number, duration: number) {
     chordAttack(chord, time)
-    const chordLength = (60 / store.state.bpm) * parseInt(store.state.chordLength)
-    const chordEnd = time + (duration ?? chordLength * consts.chordDuration)
-    chordRelease(chord, chordEnd)
+    chordRelease(chord, time + duration)
 }
 
 export function playMetronome(time: number, division: number) {

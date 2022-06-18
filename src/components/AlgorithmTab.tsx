@@ -42,8 +42,8 @@ export function AlgorithmTab() {
                 )}
             </Row>
             <Row>
-                {/*<SelectPlayback />*/}
-                {/*{store.state.playback === 'chords' && <SelectChordRhythm />}*/}
+                <SelectPlayback />
+                {store.state.playback === 'chords' && <SelectChordRhythm />}
                 {/*{store.state.playback === 'arpeggio' && [<SelectArpType key={1} />, <SelectArpSpeed key={2} />]}*/}
                 <SelectChordLength />
             </Row>

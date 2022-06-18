@@ -37,7 +37,7 @@ export const store = createStore(
         diatonicMode: <ModeName>'6',
         extensions: <ExtensionType>'simple',
         playback: <Playback>'chords',
-        chordRhythm: <ChordRhythm>'full',
+        chordRhythm: <ChordRhythm>'every4',
         arpeggioType: <ArpeggioType>'rise',
         arpeggioSpeed: <ArpeggioSpeed>'eighth',
         chordPlaningType: <ChordPlaningType>'min9',

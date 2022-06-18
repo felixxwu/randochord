@@ -91,9 +91,10 @@ export function SelectChordRhythm() {
             title={'Rhythm'}
             storeKey={'chordRhythm'}
             options={[
-                { title: 'Full Bar', value: 'full' },
-                { title: 'Twice Per Bar', value: 'twice' },
-                { title: '4x Per Bar', value: 'four' },
+                { title: 'Every 4 Beats', value: 'every4' },
+                { title: 'Every 2 Beats', value: 'every2' },
+                { title: 'Every Beat', value: 'every' },
+                { title: 'Twice Every Beat', value: 'twice every' },
                 { title: 'Dotted', value: 'dotted' },
             ]}
         />

@@ -11,7 +11,7 @@ export const clock = new Tone.Clock({
             tickListener(time, division)
         }
         division++
-        if (division >= consts.beatDivisions * parseInt(store.state.chordLength)) division = 0
+        if (division >= consts.beatDivisions * 8) division = 0
     },
     units: 'bpm',
     frequency: consts.defaultBpm,
