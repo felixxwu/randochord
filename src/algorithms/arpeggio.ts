@@ -11,10 +11,9 @@ export function playArpeggio(time: number, division: number) {
     const chord = store.state.chords[store.state.currentlyPlayingChord]
     const shortDivision = division % (parseInt(store.state.chordLength) * consts.beatDivisions)
     if (shortDivision % noteLength === 0) {
-        playArpeggioRise(time, division, chord)
-
-        arpState++
-        if (arpState >= chord.length) resetArpeggio()
+        if (store.state.arpeggioType === 'rise') playArpeggioRise(time, division, chord)
+        if (store.state.arpeggioType === 'fall') playArpeggioFall(time, division, chord)
+        if (store.state.arpeggioType === 'rise and fall') playArpeggioRiseAndFall(time, division, chord)
     }
 }
 
@@ -25,6 +24,26 @@ export function resetArpeggio() {
 function playArpeggioRise(time: number, division: number, chord: ChordType) {
     const divisionLength = 60 / store.state.bpm / consts.beatDivisions
     playChord([chord[arpState]], time, divisionLength * getArpNoteLength())
+    arpState++
+    if (arpState >= chord.length) resetArpeggio()
+}
+
+function playArpeggioFall(time: number, division: number, chord: ChordType) {
+    const divisionLength = 60 / store.state.bpm / consts.beatDivisions
+    playChord([chord[chord.length - 1 - arpState]], time, divisionLength * getArpNoteLength())
+    arpState++
+    if (arpState >= chord.length) resetArpeggio()
+}
+
+function playArpeggioRiseAndFall(time: number, division: number, chord: ChordType) {
+    const divisionLength = 60 / store.state.bpm / consts.beatDivisions
+    if (arpState < chord.length) {
+        playChord([chord[arpState]], time, divisionLength * getArpNoteLength())
+    } else {
+        playChord([chord[chord.length * 2 - 1 - arpState]], time, divisionLength * getArpNoteLength())
+    }
+    arpState++
+    if (arpState >= chord.length * 2) resetArpeggio()
 }
 
 function getArpNoteLength() {
