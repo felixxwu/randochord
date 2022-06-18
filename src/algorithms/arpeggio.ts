@@ -14,6 +14,7 @@ export function playArpeggio(time: number, division: number) {
         if (store.state.arpeggioType === 'rise') playArpeggioRise(time, division, chord)
         if (store.state.arpeggioType === 'fall') playArpeggioFall(time, division, chord)
         if (store.state.arpeggioType === 'rise and fall') playArpeggioRiseAndFall(time, division, chord)
+        if (store.state.arpeggioType === 'random') playArpeggioRandom(time, chord)
     }
 }
 
@@ -44,6 +45,12 @@ function playArpeggioRiseAndFall(time: number, division: number, chord: ChordTyp
     }
     arpState++
     if (arpState >= chord.length * 2) resetArpeggio()
+}
+
+function playArpeggioRandom(time: number, chord: ChordType) {
+    const divisionLength = 60 / store.state.bpm / consts.beatDivisions
+    const index = Math.floor(Math.random() * chord.length)
+    playChord([chord[index]], time, divisionLength * getArpNoteLength())
 }
 
 function getArpNoteLength() {
