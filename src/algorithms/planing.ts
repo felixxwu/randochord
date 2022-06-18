@@ -15,10 +15,11 @@ const chordPlaningChords: { [key in Exclude<ChordPlaningType, 'copy'>]: ChordTyp
 }
 
 export function planedChord() {
+    const offset = Math.floor(Math.random() * 12)
     if (store.state.chordPlaningType === 'copy') {
-        return [0]
+        const firstChord = store.state.chords[0]
+        return wrap(transpose(firstChord, offset))
     } else {
-        const offset = Math.floor(Math.random() * 12)
         const chord = transpose(chordPlaningChords[store.state.chordPlaningType], consts.lowestNote)
         return wrap(transpose(chord, offset))
     }
