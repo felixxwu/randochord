@@ -3,7 +3,7 @@ import consts from '../utils/consts'
 import { playChord } from '../helpers/playback'
 import { Pattern } from '../utils/types'
 
-export function playSelectedPattern(time: number, division: number) {
+export function playChordPattern(time: number, division: number) {
     if (store.state.chordRhythm === 'every4') playEvery4(time, division)
     if (store.state.chordRhythm === 'every2') playEvery2(time, division)
     if (store.state.chordRhythm === 'every') playEveryBeat(time, division)

@@ -123,9 +123,9 @@ export function SelectArpSpeed() {
             storeKey={'arpeggioSpeed'}
             options={[
                 { title: 'Quarter', value: 'quarter' },
-                { title: 'Eighth', value: 'eighth' },
-                { title: 'Sixteenth', value: 'sixteenth' },
-                { title: 'Triplets', value: 'triplet' },
+                { title: 'Half', value: 'half' },
+                { title: 'Whole', value: 'whole' },
+                { title: 'Dotted', value: 'dotted' },
             ]}
         />
     )

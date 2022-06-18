@@ -39,7 +39,7 @@ export const store = createStore(
         playback: <Playback>'chords',
         chordRhythm: <ChordRhythm>'every4',
         arpeggioType: <ArpeggioType>'rise',
-        arpeggioSpeed: <ArpeggioSpeed>'eighth',
+        arpeggioSpeed: <ArpeggioSpeed>'half',
         chordPlaningType: <ChordPlaningType>'min9',
         chordLength: <ChordLengths>consts.defaultChordLength,
     },

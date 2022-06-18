@@ -5,7 +5,8 @@ import consts from '../utils/consts'
 import { clock, onClockTick, resetDivision } from './clock'
 import { metronome, releaseAll, synth } from './synth'
 import * as Tone from 'tone'
-import { playSelectedPattern } from '../algorithms/playbackPattern'
+import { playChordPattern } from '../algorithms/playbackPattern'
+import { playArpeggio, resetArpeggio } from '../algorithms/arpeggio'
 
 onClockTick((time, division) => {
     const divisionsForOneChord = parseInt(store.state.chordLength) * consts.beatDivisions
@@ -14,11 +15,14 @@ onClockTick((time, division) => {
         if (chordIndex === null) return
         const atEnd = chordIndex >= store.state.chords.length - 1
         store.state.currentlyPlayingChord = atEnd ? 0 : chordIndex + 1
+        resetArpeggio()
+        if (atEnd) resetDivision()
     }
 
     // pattern requires the currentlyPlayingChord to be set before being called
     playMetronome(time, division)
-    playSelectedPattern(time, division)
+    if (store.state.playback === 'chords') playChordPattern(time, division)
+    if (store.state.playback === 'arpeggio') playArpeggio(time, division)
 })
 
 export async function playChords() {
