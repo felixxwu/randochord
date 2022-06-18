@@ -4,19 +4,37 @@
    version="1.2"
    width="26.458334mm"
    height="26.458334mm"
-   viewBox="0 0 15.056262 15.056262"
-   id="svg36">
+   viewBox="0 0 15.056262 15.056262">
+  <defs>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter867"
+       x="-0.1173913"
+       width="1.2347826"
+       y="-0.1173913"
+       height="1.2347826">
+      <feGaussianBlur
+         stdDeviation="0.7364476"/>
+    </filter>
+  </defs>
   <rect
-     style="display:inline;fill:#dbf6ff;fill-opacity:1;stroke-width:5.26969;stroke-linecap:round;stroke-linejoin:round;stroke-dashoffset:2.9"
-     id="rect878"
+     style="display:inline;fill:#b9d1d8;fill-opacity:1;stroke-width:5.26969;stroke-linecap:round;stroke-linejoin:round;stroke-dashoffset:2.9"
      width="15.056262"
      height="15.056262"
      x="-4.4408921e-16"
      y="0"
      rx="1.5056262"
      ry="1.5056262" />
+  <rect
+     style="display:inline;fill:#dff7ff;fill-opacity:1;stroke-width:5.26969;stroke-linecap:round;stroke-linejoin:round;stroke-dashoffset:2.9;filter:url(#filter867)"
+     width="15.056262"
+     height="15.056262"
+     x="-4.4408921e-16"
+     y="0"
+     rx="1.5056262"
+     ry="1.5056262"
+     mask="none" />
   <g
-     id="g876"
      style="display:inline;fill:#666666;fill-opacity:1"
      transform="matrix(3.089376,0,0,3.089376,-18.722914,-16.494858)">
     <rect
@@ -27,7 +45,6 @@
        height="0.2"
        ry="0.1"
        fill="currentColor"
-       id="rect16"
        style="display:inline;fill:#666666;fill-opacity:1" />
     <rect
        transform="translate(0.5691,8.776)"
@@ -37,31 +54,26 @@
        height="0.2"
        ry="0.1"
        fill="currentColor"
-       id="rect18"
        style="display:inline;fill:#666666;fill-opacity:1" />
     <path
        transform="matrix(0.004,0,0,-0.004,6.0572,7.776)"
        d="m 216,-312 c 0,-10 -8,-19 -18,-19 -10,0 -19,9 -19,19 v 145 l -83,-31 v -158 c 0,-10 -9,-19 -19,-19 -10,0 -18,9 -18,19 v 145 l -32,-12 c -2,-1 -5,-1 -7,-1 -11,0 -20,9 -20,20 v 60 c 0,8 5,16 13,19 l 46,16 V 51 L 27,40 C 25,39 22,39 20,39 9,39 0,48 0,59 v 60 c 0,8 5,15 13,18 l 46,17 v 158 c 0,10 8,19 18,19 10,0 19,-9 19,-19 V 167 l 83,31 v 158 c 0,10 9,19 19,19 10,0 18,-9 18,-19 V 211 l 32,12 c 2,1 5,1 7,1 11,0 20,-9 20,-20 v -60 c 0,-8 -5,-16 -13,-19 L 216,109 V -51 l 32,11 c 2,1 5,1 7,1 11,0 20,-9 20,-20 v -60 c 0,-8 -5,-15 -13,-18 l -46,-17 z M 96,65 V -95 l 83,30 V 95 Z"
        fill="currentColor"
-       id="path22"
        style="display:none;fill:#666666;fill-opacity:1" />
     <path
        transform="matrix(0.004,0,0,-0.004,7.5072,6.776)"
        d="m 215,112 c -50,0 -69,-43 -69,-88 0,-77 57,-136 134,-136 50,0 69,43 69,88 0,77 -57,136 -134,136 z M 495,0 c 0,-43 -35,-76 -73,-97 -53,-30 -113,-41 -174,-41 -61,0 -122,11 -175,41 -38,21 -73,54 -73,97 0,43 35,76 73,97 53,30 114,41 175,41 61,0 121,-11 174,-41 38,-21 73,-54 73,-97 z"
        fill="currentColor"
-       id="path24"
        style="fill:#666666;fill-opacity:1" />
     <path
        transform="matrix(0.004,0,0,-0.004,7.5072,8.776)"
        d="m 215,112 c -50,0 -69,-43 -69,-88 0,-77 57,-136 134,-136 50,0 69,43 69,88 0,77 -57,136 -134,136 z M 495,0 c 0,-43 -35,-76 -73,-97 -53,-30 -113,-41 -174,-41 -61,0 -122,11 -175,41 -38,21 -73,54 -73,97 0,43 35,76 73,97 53,30 114,41 175,41 61,0 121,-11 174,-41 38,-21 73,-54 73,-97 z"
        fill="currentColor"
-       id="path26"
        style="fill:#666666;fill-opacity:1" />
     <path
        transform="matrix(0.004,0,0,-0.004,7.5072,7.776)"
        d="m 215,112 c -50,0 -69,-43 -69,-88 0,-77 57,-136 134,-136 50,0 69,43 69,88 0,77 -57,136 -134,136 z M 495,0 c 0,-43 -35,-76 -73,-97 -53,-30 -113,-41 -174,-41 -61,0 -122,11 -175,41 -38,21 -73,54 -73,97 0,43 35,76 73,97 53,30 114,41 175,41 61,0 121,-11 174,-41 38,-21 73,-54 73,-97 z"
        fill="currentColor"
-       id="path28"
        style="fill:#666666;fill-opacity:1" />
     <rect
        x="7.0121999"
@@ -70,7 +82,6 @@
        height="0.2"
        ry="0.1"
        fill="currentColor"
-       id="rect867"
        style="display:inline;fill:#666666;fill-opacity:1" />
   </g>
 </svg>
