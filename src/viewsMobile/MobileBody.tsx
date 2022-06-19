@@ -112,7 +112,7 @@ const ChordGrid = styled.div`
     gap: ${consts.margin}px;
     margin-left: ${consts.margin}px;
     margin-right: ${consts.margin}px;
-    margin-bottom: ${consts.margin}px;
+    margin-bottom: ${consts.buttonHeight}px;
 `
 
 const Tabs = styled.div`

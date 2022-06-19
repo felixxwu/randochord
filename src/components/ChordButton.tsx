@@ -75,10 +75,10 @@ export function ChordButton(props: { chord: ChordType; index: number }) {
 
     function menu(): MenuList {
         return [
+            { text: 'Revoice', callback: revoiceChord },
+            { text: 'Delete', callback: deleteChord },
             { text: 'Copy', callback: () => copy(props.index) },
             { text: 'Paste', callback: () => paste(props.index) },
-            { text: 'Delete', callback: deleteChord },
-            { text: 'Revoice', callback: revoiceChord },
             isLeftMost() ? null : { text: 'Move Left', callback: moveChordLeft },
             isRightMost() ? null : { text: 'Move Right', callback: moveChordRight },
         ]

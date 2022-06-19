@@ -20,8 +20,10 @@ export function Button(props: {
     title?: string
 }) {
     const [menuOpen, setMenuOpen] = useState(false)
+    const [menuPos, setMenuPos] = useState({ x: 0, y: 0 })
     const [textScale, setTextScale] = useState(1)
     const text = useRef<HTMLDivElement>(null)
+    const buttonRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         updateScale()
@@ -29,8 +31,9 @@ export function Button(props: {
 
     return (
         <div>
-            {menuOpen && props.menu ? <Menu menu={props.menu} closeMenu={closeMenu} /> : null}
+            {menuOpen && props.menu ? <Menu menu={props.menu} closeMenu={closeMenu} position={menuPos} /> : null}
             <ButtonDiv
+                ref={buttonRef}
                 onClick={props.onClick}
                 style={style()}
                 onPointerDown={props.onPointerDown}
@@ -77,6 +80,10 @@ export function Button(props: {
         if (props.menu && props.menu.length > 0) {
             event.preventDefault()
             setMenuOpen(true)
+            if (buttonRef.current) {
+                const rect = buttonRef.current.getBoundingClientRect()
+                setMenuPos({ x: rect.x, y: rect.y })
+            }
             return false
         }
     }

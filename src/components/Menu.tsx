@@ -5,7 +5,7 @@ import { compute } from '../utils/store'
 import { getThemeVar } from '../utils/theme'
 import { MenuList } from '../utils/types'
 
-export function Menu(props: { menu: MenuList; closeMenu: () => void }) {
+export function Menu(props: { menu: MenuList; closeMenu: () => void; position: { x: number; y: number } }) {
     const [menuHeight, setMenuHeight] = useState(0)
     const [transition, setTransition] = useState(0)
 
@@ -37,6 +37,8 @@ export function Menu(props: { menu: MenuList; closeMenu: () => void }) {
             maxHeight: `${menuHeight}px`,
             transition: `${transition}ms linear`,
             backgroundColor: compute.theme.frontPanelColour,
+            left: `${props.position.x}px`,
+            top: `${props.position.y}px`,
         }
     }
 
@@ -55,14 +57,15 @@ export function Menu(props: { menu: MenuList; closeMenu: () => void }) {
 const MenuCloser = styled.div`
     position: fixed;
     z-index: 1;
-    width: 200vw;
-    height: 200vh;
-    transform: translateY(-100vh) translateX(-100vw);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
 `
 
 const MenuDiv = styled.div`
+    position: fixed;
     width: max-content;
-    transform: translateY(calc(100vh)) translateX(100vw);
     border-radius: ${consts.borderRadius}px;
     cursor: pointer;
     overflow: hidden;
