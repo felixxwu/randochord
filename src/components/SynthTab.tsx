@@ -1,3 +1,3 @@
 export function SynthTab() {
-    return <div>Synthesiser settings go here - work in progress</div>
+  return <div>Synthesiser settings go here - work in progress</div>
 }

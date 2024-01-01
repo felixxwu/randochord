@@ -5,29 +5,29 @@ import React from 'react'
 import { getNoteColour } from '../helpers/getNoteName'
 
 export function PianoRoll() {
-    return (
-        <PianoRollDiv>
-            {[...Array(consts.numNotes).keys()].reverse().map(i => (
-                <Row style={rowStyle(i)} key={i} />
-            ))}
-        </PianoRollDiv>
-    )
+  return (
+    <PianoRollDiv>
+      {[...Array(consts.numNotes).keys()].reverse().map(i => (
+        <Row style={rowStyle(i)} key={i} />
+      ))}
+    </PianoRollDiv>
+  )
 
-    function rowStyle(note: number): React.CSSProperties {
-        return {
-            width: compute.bodyWidth - consts.margin,
-            backgroundColor: getNoteColour(note) === 'b' ? compute.theme.pianoRollBlack : compute.theme.pianoRollWhite,
-        }
+  function rowStyle(note: number): React.CSSProperties {
+    return {
+      width: compute.bodyWidth - consts.margin,
+      backgroundColor: getNoteColour(note) === 'b' ? compute.theme.pianoRollBlack : compute.theme.pianoRollWhite,
     }
+  }
 }
 
 const PianoRollDiv = styled.div`
-    position: absolute;
-    left: ${consts.margin}px;
+  position: absolute;
+  left: ${consts.margin}px;
 `
 
 const Row = styled.div`
-    background-color: grey;
-    height: ${consts.trayContentHeight / consts.numNotes}px;
-    transition: ${consts.transition}ms;
+  background-color: grey;
+  height: ${consts.trayContentHeight / consts.numNotes}px;
+  transition: ${consts.transition}ms;
 `

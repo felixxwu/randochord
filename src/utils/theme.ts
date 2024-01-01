@@ -24,13 +24,13 @@ const themes = {
 type Theme<T extends 'dark' | 'light'> = { [key in keyof typeof themes]: typeof themes[key][T] }
 
 export function getTheme<T extends 'dark' | 'light'>(type: T): Theme<T> {
-    const theme = {} as any
-    for (const key in themes) {
-        theme[key] = themes[key as keyof typeof themes][type]
-    }
-    return theme
+  const theme = {} as any
+  for (const key in themes) {
+    theme[key] = themes[key as keyof typeof themes][type]
+  }
+  return theme
 }
 
 export function getThemeVar(name: keyof typeof themes) {
-    return `var(--${name})`
+  return `var(--${name})`
 }

@@ -7,35 +7,35 @@ import Body from './viewsDesktop/Body'
 import MobileBody from './viewsMobile/MobileBody'
 
 export default function App() {
-    store.subscribeToAll()
-    onStoreUpdate()
+  store.subscribeToAll()
+  onStoreUpdate()
 
-    useEffect(() => {
-        window.addEventListener('resize', () => {
-            store.state.appWidth = window.innerWidth
-            store.state.appHeight = window.innerHeight
-        })
-        window.addEventListener('keydown', handleKeydown)
-        window.addEventListener('keyup', handleKeyup)
-    }, [])
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      store.state.appWidth = window.innerWidth
+      store.state.appHeight = window.innerHeight
+    })
+    window.addEventListener('keydown', handleKeydown)
+    window.addEventListener('keyup', handleKeyup)
+  }, [])
 
-    return <AppDiv style={style()}>{store.state.appWidth > consts.maxPanelWidth ? <Body /> : <MobileBody />}</AppDiv>
+  return <AppDiv style={style()}>{store.state.appWidth > consts.maxPanelWidth ? <Body /> : <MobileBody />}</AppDiv>
 
-    function style(): React.CSSProperties {
-        return {
-            color: compute.theme.textColour,
-            backgroundColor:
-                store.state.appWidth > consts.maxPanelWidth ? compute.theme.bgColour : compute.theme.frontPanelColour,
-            height: `${store.state.appHeight}px`,
-        }
+  function style(): React.CSSProperties {
+    return {
+      color: compute.theme.textColour,
+      backgroundColor:
+        store.state.appWidth > consts.maxPanelWidth ? compute.theme.bgColour : compute.theme.frontPanelColour,
+      height: `${store.state.appHeight}px`,
     }
+  }
 }
 
 const AppDiv = styled.div`
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: ${consts.transition}ms;
-    overflow: hidden;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ${consts.transition}ms;
+  overflow: hidden;
 `

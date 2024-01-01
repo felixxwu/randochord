@@ -14,133 +14,133 @@ import { AlgorithmTab } from '../components/AlgorithmTab'
 import { getThemeVar } from '../utils/theme'
 
 export default function MobileBody() {
-    const [isBlank, setIsBlank] = useState(true)
+  const [isBlank, setIsBlank] = useState(true)
 
-    useEffect(() => {
-        setTimeout(() => {
-            setIsBlank(false)
-            // midi tab not valid on mobile
-            if (store.state.currentTab === 'midi') store.state.currentTab = 'chords'
-        })
-    }, [])
+  useEffect(() => {
+    setTimeout(() => {
+      setIsBlank(false)
+      // midi tab not valid on mobile
+      if (store.state.currentTab === 'midi') store.state.currentTab = 'chords'
+    })
+  }, [])
 
-    return (
-        <MobileBodyDiv style={style()}>
-            <MobileToolbar />
-            <Tabs>
-                <Tab type={'chords'} />
-                <Tab type={'synth'} />
-                <Tab type={'algorithm'} />
-            </Tabs>
-            <RelativeWrapper>
-                <TabContent style={tabContentStyle('chords')}>
-                    <TopRow>
-                        <PlayStopButton />
-                        <BPMKnob>
-                            <Knob
-                                text={`BPM ${store.state.bpm}`}
-                                divisions={consts.maxBpm - consts.minBpm}
-                                scrollStep={1}
-                                value={store.state.bpm - consts.minBpm}
-                                onTurn={value => (store.state.bpm = value + consts.minBpm)}
-                            />
-                        </BPMKnob>
-                    </TopRow>
-                    <ChordGrid>
-                        {store.state.chords.map((chord, index) => (
-                            <ChordButton key={index} chord={chord} index={index} />
-                        ))}
-                        <AddChord />
-                    </ChordGrid>
-                </TabContent>
-                <TabContent style={tabContentStyle('synth')}>
-                    <SynthTab />
-                </TabContent>
-                <TabContent style={tabContentStyle('algorithm')}>
-                    <AlgorithmTab />
-                </TabContent>
-            </RelativeWrapper>
-        </MobileBodyDiv>
-    )
+  return (
+    <MobileBodyDiv style={style()}>
+      <MobileToolbar />
+      <Tabs>
+        <Tab type={'chords'} />
+        <Tab type={'synth'} />
+        <Tab type={'algorithm'} />
+      </Tabs>
+      <RelativeWrapper>
+        <TabContent style={tabContentStyle('chords')}>
+          <TopRow>
+            <PlayStopButton />
+            <BPMKnob>
+              <Knob
+                text={`BPM ${store.state.bpm}`}
+                divisions={consts.maxBpm - consts.minBpm}
+                scrollStep={1}
+                value={store.state.bpm - consts.minBpm}
+                onTurn={value => (store.state.bpm = value + consts.minBpm)}
+              />
+            </BPMKnob>
+          </TopRow>
+          <ChordGrid>
+            {store.state.chords.map((chord, index) => (
+              <ChordButton key={index} chord={chord} index={index} />
+            ))}
+            <AddChord />
+          </ChordGrid>
+        </TabContent>
+        <TabContent style={tabContentStyle('synth')}>
+          <SynthTab />
+        </TabContent>
+        <TabContent style={tabContentStyle('algorithm')}>
+          <AlgorithmTab />
+        </TabContent>
+      </RelativeWrapper>
+    </MobileBodyDiv>
+  )
 
-    function style(): React.CSSProperties {
-        return {
-            height: store.state.appHeight,
-            opacity: isBlank ? 0 : 1,
-        }
+  function style(): React.CSSProperties {
+    return {
+      height: store.state.appHeight,
+      opacity: isBlank ? 0 : 1,
     }
+  }
 
-    function tabContentStyle(type: TabType): React.CSSProperties {
-        const order: { [key in TabType]: number } = { midi: 0, synth: 1, algorithm: 2, chords: 0 }
-        const offset: { [key in TabType]: number } = {
-            midi: 0,
-            synth: order.synth - order[store.state.currentTab],
-            algorithm: order.algorithm - order[store.state.currentTab],
-            chords: order.chords - order[store.state.currentTab],
-        }
-        return { left: `${store.state.appWidth * offset[type]}px`, opacity: store.state.currentTab === type ? 1 : 0 }
+  function tabContentStyle(type: TabType): React.CSSProperties {
+    const order: { [key in TabType]: number } = { midi: 0, synth: 1, algorithm: 2, chords: 0 }
+    const offset: { [key in TabType]: number } = {
+      midi: 0,
+      synth: order.synth - order[store.state.currentTab],
+      algorithm: order.algorithm - order[store.state.currentTab],
+      chords: order.chords - order[store.state.currentTab],
     }
+    return { left: `${store.state.appWidth * offset[type]}px`, opacity: store.state.currentTab === type ? 1 : 0 }
+  }
 }
 
 const MobileBodyDiv = styled.div`
-    width: 100vw;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: auto;
-    overflow-x: hidden;
-    transition: ${consts.transition}ms;
+  width: 100vw;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: ${consts.transition}ms;
 `
 
 const BPMKnob = styled.div`
-    width: ${consts.buttonWidth}px;
+  width: ${consts.buttonWidth}px;
 `
 
 const TopRow = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: ${consts.margin}px;
-    margin-bottom: ${consts.margin};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: ${consts.margin}px;
+  margin-bottom: ${consts.margin};
 `
 
 const ChordGrid = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: ${consts.margin}px;
-    margin-left: ${consts.margin}px;
-    margin-right: ${consts.margin}px;
-    margin-bottom: ${consts.buttonHeight}px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: ${consts.margin}px;
+  margin-left: ${consts.margin}px;
+  margin-right: ${consts.margin}px;
+  margin-bottom: ${consts.buttonHeight}px;
 `
 
 const Tabs = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    padding: ${consts.margin}px;
-    justify-content: center;
-    gap: ${consts.margin}px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: ${consts.margin}px;
+  justify-content: center;
+  gap: ${consts.margin}px;
 
-    > * {
-        background-color: ${getThemeVar('highlight')};
-    }
+  > * {
+    background-color: ${getThemeVar('highlight')};
+  }
 `
 
 const TabContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: ${consts.margin}px;
-    position: absolute;
-    transition: ${consts.transition}ms cubic-bezier(0.5, 0, 0.5, 1);
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${consts.margin}px;
+  position: absolute;
+  transition: ${consts.transition}ms cubic-bezier(0.5, 0, 0.5, 1);
+  width: 100%;
 
-    > * select {
-        background-color: ${getThemeVar('toolbarColour')};
-    }
+  > * select {
+    background-color: ${getThemeVar('toolbarColour')};
+  }
 `
 
 const RelativeWrapper = styled.div`
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 `

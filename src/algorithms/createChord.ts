@@ -5,10 +5,10 @@ import { randomNotes } from './random'
 import { planedChord } from './planing'
 
 export function createChord(): ChordType {
-    if (store.state.algorithm === 'diatonic') return createDiatonic()
-    if (store.state.algorithm === 'chord planing') return planedChord()
-    if (store.state.algorithm === 'random') return randomNotes()
-    return []
+  if (store.state.algorithm === 'diatonic') return createDiatonic()
+  if (store.state.algorithm === 'chord planing') return planedChord()
+  if (store.state.algorithm === 'random') return randomNotes()
+  return []
 }
 
 // TODO algorithm ideas:
