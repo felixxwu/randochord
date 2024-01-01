@@ -3,8 +3,8 @@ import React, { useEffect } from 'react'
 import { compute, onStoreUpdate, store } from './utils/store'
 import consts from './utils/consts'
 import { handleKeydown, handleKeyup } from './helpers/keypress'
-import Body from './viewsDesktop/Body'
-import MobileBody from './viewsMobile/MobileBody'
+import Body from './views/desktop/Body'
+import MobileBody from './views/mobile/MobileBody'
 
 export default function App() {
   store.subscribeToAll()

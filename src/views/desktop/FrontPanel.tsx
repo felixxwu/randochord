@@ -1,11 +1,11 @@
 import React from 'react'
-import consts from '../utils/consts'
+import consts from '../../utils/consts'
 import styled from 'styled-components'
-import { Knob } from '../components/Knob'
-import { compute, store } from '../utils/store'
-import { ChordButton } from '../components/ChordButton'
-import { AddChord } from '../components/AddChord'
-import { PlayStopButton } from '../components/PlayStopButton'
+import { Knob } from '../../components/Knob'
+import { compute, store } from '../../utils/store'
+import { ChordButton } from '../../components/ChordButton'
+import { AddChord } from '../../components/AddChord'
+import { PlayStopButton } from '../../components/PlayStopButton'
 import { Toolbar } from './Toolbar'
 
 export function FrontPanel() {

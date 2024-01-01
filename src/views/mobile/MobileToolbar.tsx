@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import consts from '../utils/consts'
+import consts from '../../utils/consts'
 import React from 'react'
-import { compute, store } from '../utils/store'
-import { ToolbarButtons } from '../components/ToolbarButtons'
+import { compute, store } from '../../utils/store'
+import { ToolbarButtons } from '../../components/ToolbarButtons'
 
 export function MobileToolbar() {
   return (

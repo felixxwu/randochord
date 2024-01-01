@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import consts from '../utils/consts'
-import { compute, store } from '../utils/store'
+import consts from '../../utils/consts'
+import { compute, store } from '../../utils/store'
 import React from 'react'
-import chevron from '../images/chevron.svg'
-import { Icon } from '../components/Icon'
+import chevron from '../../images/chevron.svg'
+import { Icon } from '../../components/Icon'
 import { TabSwitcher } from './TabSwitcher'
 
 export function TrayContent() {

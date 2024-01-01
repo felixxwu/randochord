@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import consts from '../utils/consts'
+import consts from '../../utils/consts'
 import React from 'react'
-import { Tab } from '../components/Tab'
-import { MidiTab } from '../components/MidiTab'
-import { SynthTab } from '../components/SynthTab'
-import { AlgorithmTab } from '../components/AlgorithmTab'
-import { TabType } from '../utils/types'
-import { compute, store } from '../utils/store'
+import { Tab } from '../../components/Tab'
+import { MidiTab } from '../../components/MidiTab'
+import { SynthTab } from '../../components/SynthTab'
+import { AlgorithmTab } from '../../components/AlgorithmTab'
+import { TabType } from '../../utils/types'
+import { compute, store } from '../../utils/store'
 
 export function TabSwitcher() {
   return (

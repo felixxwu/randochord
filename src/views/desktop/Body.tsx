@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { useEffect, useState } from 'react'
-import consts from '../utils/consts'
-import { compute, store } from '../utils/store'
+import consts from '../../utils/consts'
+import { compute, store } from '../../utils/store'
 import { FrontPanel } from './FrontPanel'
 import { TrayContent } from './TrayContent'
 

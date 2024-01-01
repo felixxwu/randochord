@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import consts from '../utils/consts'
-import { compute } from '../utils/store'
+import consts from '../../utils/consts'
+import { compute } from '../../utils/store'
 import React from 'react'
-import { ToolbarButtons } from '../components/ToolbarButtons'
-import { Icon } from '../components/Icon'
-import logo from '../images/logo.svg'
+import { ToolbarButtons } from '../../components/ToolbarButtons'
+import { Icon } from '../../components/Icon'
+import logo from '../../images/logo.svg'
 
 export function Toolbar() {
   return (
