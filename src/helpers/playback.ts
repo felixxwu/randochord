@@ -3,7 +3,7 @@ import { ChordType } from '../utils/types'
 import { getNoteName } from './getNoteName'
 import consts from '../utils/consts'
 import { clock, onClockTick, resetDivision } from './clock'
-import { metronome, releaseAll, synth } from './synth'
+import { attackNotes, metronome, releaseAll, releaseNotes } from './synth'
 import * as Tone from 'tone'
 import { playChordPattern } from '../algorithms/playbackPattern'
 import { playArpeggio, resetArpeggio } from '../algorithms/arpeggio'
@@ -63,7 +63,7 @@ export function previewChord(chord: ChordType) {
 
 export function chordAttack(chord: ChordType, time?: number, release: boolean = true) {
   if (release) releaseAll()
-  synth.triggerAttack(
+  attackNotes(
     chord.map(note => getNoteName(note)),
     time,
     store.state.masterVolume / consts.maxMasterVolume
@@ -71,7 +71,7 @@ export function chordAttack(chord: ChordType, time?: number, release: boolean = 
 }
 
 export function chordRelease(chord: ChordType, time?: number) {
-  synth.triggerRelease(
+  releaseNotes(
     chord.map(note => getNoteName(note)),
     time
   )

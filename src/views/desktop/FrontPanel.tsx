@@ -28,7 +28,7 @@ export function FrontPanel() {
           <Knob
             text={`Vol. ${store.state.masterVolume}`}
             divisions={100}
-            scrollStep={5}
+            scrollStep={1}
             value={store.state.masterVolume}
             onTurn={value => (store.state.masterVolume = value)}
             title='Master volume'
