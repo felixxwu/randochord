@@ -1,4 +1,4 @@
-import { createStore } from 'truly-global-state'
+import { createStore } from '../truly-global-state'
 import consts from './consts'
 import {
   Algorithm,
