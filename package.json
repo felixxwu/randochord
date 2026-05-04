@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build && npm run build:audio-engine",
-    "build:audio-engine": "cd audio-engine && npm run build",
+    "build:audio-engine": "cd audio-engine && npm install --prefer-offline --no-audit && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
