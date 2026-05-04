@@ -18,9 +18,22 @@ let rrIndex = 0
 type Assignment = { note: string; voice: Tone.Synth }
 const active: Assignment[] = []
 
+function deepMerge<T>(target: T, source: T): T {
+  if (typeof source !== 'object' || source === null) return source
+  const out: any = { ...target }
+  for (const key of Object.keys(source)) {
+    const sv = (source as any)[key]
+    const tv = (out as any)[key]
+    out[key] = typeof sv === 'object' && sv !== null && typeof tv === 'object' && tv !== null
+      ? deepMerge(tv, sv)
+      : sv
+  }
+  return out
+}
+
 export const synth = {
   set(options: Parameters<Tone.Synth['set']>[0]) {
-    voiceOptions = { ...voiceOptions, ...options }
+    voiceOptions = deepMerge(voiceOptions, options)
     for (const v of voices) v.set(options)
   },
 }
