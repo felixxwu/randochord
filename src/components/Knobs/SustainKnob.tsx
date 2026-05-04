@@ -10,8 +10,6 @@ export function SustainKnob() {
 
   const value = divisionToValue({ division, maxDivisions: MAX_DIVISIONS, minValue: 0, maxValue: 1 })
 
-  console.log(`• value`, value)
-
   useEffect(() => {
     synth.set({ envelope: { sustain: value } })
   }, [])

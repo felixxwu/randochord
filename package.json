@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && npm run build:audio-engine",
+    "build:audio-engine": "cd audio-engine && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {

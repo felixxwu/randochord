@@ -1,0 +1,20 @@
+{
+  "targets": {
+    "release": {
+      "outFile": "public/engine.wasm",
+      "textFile": "public/engine.wat",
+      "sourceMap": false,
+      "optimizeLevel": 3,
+      "shrinkLevel": 1,
+      "runtime": "stub",
+      "sharedMemory": true,
+      "importMemory": true,
+      "initialMemory": 1,
+      "maximumMemory": 1,
+      "enable": ["threads"]
+    }
+  },
+  "options": {
+    "bindings": "raw"
+  }
+}

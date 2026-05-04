@@ -25,3 +25,7 @@ dist-ssr
 /.firebase/hosting.*.cache
 
 .history
+
+# audio-engine build artifacts (rebuilt by `npm run build`)
+audio-engine/public/engine.wasm
+audio-engine/public/engine.wat
