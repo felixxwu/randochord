@@ -57,6 +57,7 @@ const S_DECAY_MS:        usize = STATE_BASE + 12;
 const S_SUSTAIN_MILLI:   usize = STATE_BASE + 16;  // 0..1000 (sustain × 1000)
 const S_RELEASE_MS:      usize = STATE_BASE + 20;
 const S_OSC_TYPE:        usize = STATE_BASE + 24;  // OSC_*
+const S_VOLUME_MILLI:    usize = STATE_BASE + 28;  // 0..1000 (volume × 1000)
 
 // Oscillator waveforms
 const OSC_SQUARE:   i32 = 0;
@@ -222,6 +223,12 @@ export function render(frames: i32): void {
   let oscType: i32 = atomic.load<i32>(S_OSC_TYPE);
   if (oscType < 0 || oscType > 3) oscType = OSC_SQUARE;
 
+  // Master volume — 0..1000 milli-units → 0..1.
+  let volumeMilli: i32 = atomic.load<i32>(S_VOLUME_MILLI);
+  if (volumeMilli < 0)    volumeMilli = 0;
+  if (volumeMilli > 1000) volumeMilli = 1000;
+  const volume: f32 = f32(volumeMilli) * 0.001;
+
   for (let i: i32 = 0; i < frames; i++) {
     const absSample: i32 = totalSamples;
 
@@ -302,7 +309,7 @@ export function render(frames: i32): void {
     // Headroom + cheap hard clip (proper saturation/limiter would go here
     // in a real engine; for an MVP, clipping is acceptable when 8 voices
     // pile up at full envelope).
-    let out: f32 = mix * 0.15;
+    let out: f32 = mix * 0.15 * volume;
     if (out >  1.0) out =  1.0;
     if (out < -1.0) out = -1.0;
     store<f32>(OUT_BASE + (<usize>i << 2), out);

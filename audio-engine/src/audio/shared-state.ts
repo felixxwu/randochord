@@ -35,6 +35,7 @@ const S_DECAY_MS        = (STATE_BASE + 12) >> 2;
 const S_SUSTAIN_MILLI   = (STATE_BASE + 16) >> 2;
 const S_RELEASE_MS      = (STATE_BASE + 20) >> 2;
 const S_OSC_TYPE        = (STATE_BASE + 24) >> 2;
+const S_VOLUME_MILLI    = (STATE_BASE + 28) >> 2;
 const R_WRITE_IDX       = (RING_BASE  + 0)  >> 2;
 const R_READ_IDX        = (RING_BASE  + 4)  >> 2;
 
@@ -95,6 +96,10 @@ export class SharedState {
   }
   setOscillator(type: number): void {
     Atomics.store(this.i32, S_OSC_TYPE, type | 0);
+  }
+  setVolume(level: number): void {  // 0..1
+    const milli = Math.max(0, Math.min(1000, Math.round(level * 1000)));
+    Atomics.store(this.i32, S_VOLUME_MILLI, milli);
   }
 
   // Push one timestamped event into the ring. Returns false if the ring is

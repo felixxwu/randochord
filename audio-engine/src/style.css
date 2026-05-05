@@ -120,6 +120,32 @@ h2 { font-weight: 500; margin-top: 2rem; margin-bottom: 0.25rem; font-size: 1.1r
   font-variant-numeric: tabular-nums;
 }
 
+/* --- Volume (lives in the sequencer controls row) --------------------- */
+
+.vol-slot { margin-left: auto; }
+.vol-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.vol-control label {
+  font-size: 0.85rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.vol-control input[type="range"] {
+  width: 8rem;
+  accent-color: #2a7;
+}
+.vol-control span {
+  font-size: 0.8rem;
+  color: #ddd;
+  font-variant-numeric: tabular-nums;
+  min-width: 2.5rem;
+  text-align: right;
+}
+
 /* --- Oscillator select ------------------------------------------------- */
 
 .osc-select {

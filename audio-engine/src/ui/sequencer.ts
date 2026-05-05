@@ -68,6 +68,7 @@ export function mountSequencer(
       <div class="row controls">
         <button id="play" type="button">Play</button>
         <label>BPM <input id="bpm" type="number" min="60" max="240" step="1" value="${DEFAULT_BPM}" /></label>
+        <div id="vol-slot" class="vol-slot"></div>
       </div>
       <div class="row steps" id="steps"></div>
       <div class="row playhead" id="playhead">

@@ -23,6 +23,7 @@ import { mountSequencer } from './ui/sequencer';
 import { mountKeyboard } from './ui/keyboard';
 import { mountAdsrControls } from './ui/adsr-controls';
 import { mountOscillatorSelect } from './ui/oscillator-select';
+import { mountVolumeControl } from './ui/volume-control';
 
 const app = document.querySelector<HTMLDivElement>('#app');
 if (!app) throw new Error('#app not found');
@@ -58,6 +59,8 @@ createEngine().then((engine) => {
 
   mountOscillatorSelect(oscRoot, engine.state);
   mountAdsrControls(adsrRoot, engine.state);
+  const volSlot = seqRoot.querySelector<HTMLDivElement>('#vol-slot')!;
+  mountVolumeControl(volSlot, engine.state);
 
   mountKeyboard(
     kbRoot,
